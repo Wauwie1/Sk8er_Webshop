@@ -21,3 +21,4 @@ C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\ob
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.RazorTargetAssemblyInfo.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.Views.pdb
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.csproj.CopyComplete
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
