@@ -1,0 +1,14 @@
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\bin\Debug\netcoreapp2.1\Sk8er_Webshop.deps.json
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\bin\Debug\netcoreapp2.1\Sk8er_Webshop.runtimeconfig.json
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\bin\Debug\netcoreapp2.1\Sk8er_Webshop.runtimeconfig.dev.json
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\bin\Debug\netcoreapp2.1\Sk8er_Webshop.dll
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\bin\Debug\netcoreapp2.1\Sk8er_Webshop.pdb
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.csprojAssemblyReference.cache
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.csproj.CoreCompileInputs.cache
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.RazorAssemblyInfo.cache
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.RazorAssemblyInfo.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.AssemblyInfoInputs.cache
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.AssemblyInfo.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.RazorTargetAssemblyInfo.cache
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.dll
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Sk8er_Webshop.pdb
