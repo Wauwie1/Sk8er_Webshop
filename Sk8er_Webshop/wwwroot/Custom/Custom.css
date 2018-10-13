@@ -1,6 +1,25 @@
 ﻿body {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.test {
-    background-color: blueviolet;
+.div-center {
+    display: block;
+    margin: auto;
+}
+
+
+.navbar{
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.navbar .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar a {
+    margin-left: 20px;
 }
