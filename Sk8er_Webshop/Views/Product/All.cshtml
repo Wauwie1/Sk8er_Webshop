@@ -1,0 +1,15 @@
+﻿@model Sk8er_Webshop.ViewModels.AllProductViewModel
+
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul>
+    @foreach(var product in Model.products)
+    {
+        <li>@product.Name</li>
+    }
+
+</ul>
+

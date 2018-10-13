@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sk8er_Webshop.Data\Sk8er_Webshop.Data.csproj" />
+    <ProjectReference Include="..\Sk8er_Webshop.Models\Sk8er_Webshop.Models.csproj" />
+  </ItemGroup>
+
 </Project>

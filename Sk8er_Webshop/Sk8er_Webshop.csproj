@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sk8er_Webshop.Logic\Sk8er_Webshop.Logic.csproj" />
+    <ProjectReference Include="..\Sk8er_Webshop.Models\Sk8er_Webshop.Models.csproj" />
+  </ItemGroup>
+
 </Project>
