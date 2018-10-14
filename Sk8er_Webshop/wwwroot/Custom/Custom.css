@@ -1,0 +1,45 @@
+﻿body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.div-center {
+    display: block;
+    margin: auto;
+}
+
+
+.navbar{
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.navbar .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar a {
+    margin-left: 20px;
+}
+
+.form-control:focus {
+    color: black;
+    background-color: #fff;
+    border-color: black;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem black;
+}
+
+.form-control {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem black;
+}
