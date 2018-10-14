@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -13,19 +15,21 @@
     <link rel="stylesheet" href="~/Custom/Custom.css" />
     <title>@ViewData["Title"] - Sk8er</title>
 </head>
+
 <body>
 
     <!--Navbar-->
-    @Html.Partial("_NavBar")
+    <partial name="_Navbar"/>
+
 
     <!--Renderbody-->
 
     @RenderBody()
 
 
-    <footer>
-        @Html.Partial("_Footer")
-    </footer>
+<footer>
+    <partial name="_Footer"/>
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
