@@ -32,6 +32,15 @@
     font-size: 8px;
     color: #606060;
 }
+
+.indent {
+    text-indent: 100px;
+}
+
+.line-vertical {
+    border-left: black;
+
+}
 /*Bootstrap overrides:*/
 .navbar {
     font-family: 'Montserrat', sans-serif;
