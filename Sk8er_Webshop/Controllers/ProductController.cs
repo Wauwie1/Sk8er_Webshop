@@ -31,5 +31,10 @@ namespace Sk8er_Webshop.Controllers
 
             return View(viewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
     }
 }
