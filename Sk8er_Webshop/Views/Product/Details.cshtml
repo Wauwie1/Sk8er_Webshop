@@ -1,4 +1,4 @@
-﻿
+﻿@model Sk8er_Webshop.Models.Product
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,14 +9,14 @@
     
     <div class="row">
         <div class="col-lg-7">
-            <img class="img-fluid" src="https://cdn.webshopapp.com/shops/260322/files/222595769/patagonia-patagonia-retro-pile-vest-el-cap-khaki-2.jpg" alt="Photo Product" />
+            <img class="img-fluid" src=@Model.ImgURL alt="Photo Product" />
         </div>
 
         <div class="col">
             <br/>
-            <h1>Patagonia Trui</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac nibh tempus, ornare metus eget, convallis elit. Etiam vitae tortor sem. Suspendisse at pharetra massa. Vestibulum ex arcu, feugiat sed mi eget, semper posuere tellus. Aliquam erat turpis, vehicula vel ex et, facilisis consequat justo. Aenean sodales mattis euismod. Ut et est convallis, egestas dui sit amet, rhoncus nisl.
-            </p>
+            <h1>@Model.Name</h1>
+            <p>@Model.Description</p>
+            
             <form>
                 <div class="form-group">
                     <label for="selectSize">Selecteer een maat:</label>
@@ -28,7 +28,7 @@
                         <option>XL</option>
                     </select>
                     <br />
-                    <h3>€39,99</h3>
+                    <h3>€@Model.Price</h3>
                     <br/>
                     <button type="button" class="btn btn-default">Toevoegen aan winkelmand</button>
 
