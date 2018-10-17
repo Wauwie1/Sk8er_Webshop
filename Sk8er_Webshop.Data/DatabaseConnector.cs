@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using System.Data;
+using System.Data;
 using System.Data.SqlClient;
-=======
-﻿using System.Data.SqlClient;
->>>>>>> master
 
 namespace Sk8er_Webshop.Data
 {
@@ -39,7 +35,6 @@ namespace Sk8er_Webshop.Data
             con.Close();
             return "";
         }
-<<<<<<< HEAD
 
         public DataTable GetDataTable(string query)
         {
@@ -63,7 +58,5 @@ namespace Sk8er_Webshop.Data
             return dataTable;
 
         }
-=======
->>>>>>> master
     }
 }
