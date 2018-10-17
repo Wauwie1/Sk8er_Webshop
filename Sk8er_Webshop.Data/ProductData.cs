@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using Sk8er_Webshop.Models;
 
@@ -11,8 +12,6 @@ namespace Sk8er_Webshop.Data
         {
             string query = string.Format("EXEC GetProductById @Id = {0};", id);
 
-
-            
             DataTable dataTable = DatabaseConnector.GetDataTable(query);
 
             Product productReturn = new Product();
@@ -50,6 +49,41 @@ namespace Sk8er_Webshop.Data
             }
 
             return productReturn;
+        }
+
+        public static List<Product> GetAllProducts()
+        {
+            string query = "EXEC GetAllProducts";
+            DataTable dataTable = DatabaseConnector.GetDataTable(query);
+
+            List<Product> returnList = new List<Product>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                string name = row["Name"].ToString();
+                string collection = row["Collection"].ToString();
+                string description = row["Description"].ToString();
+                int ID = (int)row["ProductKey"];
+                string imgURL = row["ImgURL"].ToString();
+                decimal price = (decimal)row["Price"];
+                string productType = row["ProductType"].ToString();
+
+                Product temp = new Product()
+                {
+                    Name = name,
+                    Collection = collection,
+                    Description = description,
+                    Id = ID,
+                    ImgURL = imgURL,
+                    Price = price,
+                    ProductType = productType,
+
+                };
+
+                returnList.Add(temp);
+            }
+
+            return returnList;
         }
     }
 }

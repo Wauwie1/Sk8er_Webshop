@@ -18,17 +18,8 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult All()
         {
-            var Products = new List<Product>
-            {
-                new Product {Name = "Kanariegele trui"},
-                new Product {Name = "Lelijke broek"},
-                new Product {Name = "Vans 200x"}
-            };
-
-            var viewModel = new AllProductViewModel
-            {
-                products = Products
-            };
+            var viewModel = new AllProductViewModel();
+            viewModel.products = ProductLogic.GetAllProducts();
 
             return View(viewModel);
         }

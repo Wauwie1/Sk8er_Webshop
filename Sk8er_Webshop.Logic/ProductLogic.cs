@@ -22,8 +22,11 @@ namespace Sk8er_Webshop.Logic
             {
                 return product;
             }
-            
-           
+        }
+
+        public static List<Product> GetAllProducts()
+        {
+            return ProductData.GetAllProducts();
         }
     }
 }

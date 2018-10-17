@@ -75,4 +75,20 @@
     outline: 0;
     box-shadow: 0 0 0 0.1rem black;
 }
+.card {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 600px;
+    border: none;
+    border-radius: 0rem;
+}
+.card-img {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 600px;
+    border-radius: 0rem;
+}
+
 
