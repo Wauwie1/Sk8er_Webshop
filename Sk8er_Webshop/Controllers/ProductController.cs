@@ -35,7 +35,16 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult Details(int id)
         {
-            return View(ProductLogic.GetProductById(id));
+            try
+            {
+                Product product = ProductLogic.GetProductById(id);
+                return View(product);
+            }
+            catch (NullReferenceException e)
+            {
+                return Content(string.Format("An error occured: {0} \n {1}", e.Message, e.GetBaseException()));
+            }
+            
         }
     }
 }

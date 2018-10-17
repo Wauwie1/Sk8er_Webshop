@@ -3,19 +3,14 @@ using System.Data.SqlClient;
 
 namespace Sk8er_Webshop.Data
 {
-    public class DatabaseConnector
+    public static class DatabaseConnector
     {
-        private string connectionString { get; }
-        
+        private static string connectionString = @"Data Source=sk8erwebshopdbserver.database.windows.net;Initial Catalog=Sk8erWebshop_database;User ID=TheAnswer42;Password=XTqwj]Q^`""NPh6*~s4t#PRE@t'7w~jy[.9#S>XrsP[*+JT,F(e3>&uP?syDBxE/*e]WE'^c&TDPwW^r2J""H<?tzQV6v`'2h]CK%b?(44C4aX8&`+Yx?QCA5XGpRX:{t;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        public DatabaseConnector(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-        public string GetSingleString(string query)
+        public static string GetSingleString(string query)
         {
             SqlConnection con = new SqlConnection(connectionString);
-            //Returns the first string from a query
+            //Returns the first string from a query 
             con.Close();
             con.Open();
             SqlCommand command = new SqlCommand(query, con);
@@ -36,7 +31,7 @@ namespace Sk8er_Webshop.Data
             return "";
         }
 
-        public DataTable GetDataTable(string query)
+        public static DataTable GetDataTable(string query)
         {
             DataTable dataTable = new DataTable();
             SqlConnection con = new SqlConnection(connectionString);
