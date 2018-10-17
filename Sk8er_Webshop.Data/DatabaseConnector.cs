@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace Sk8er_Webshop.Data
 {
@@ -33,6 +34,29 @@ namespace Sk8er_Webshop.Data
 
             con.Close();
             return "";
+        }
+
+        public DataTable GetDataTable(string query)
+        {
+            DataTable dataTable = new DataTable();
+            SqlConnection con = new SqlConnection(connectionString);
+            //Returns a DataTable
+            con.Open();
+            
+
+            SqlCommand command = new SqlCommand(query, con);
+
+
+            // Creates data adapter
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+
+            adapter.Fill(dataTable);
+            con.Close();
+            adapter.Dispose();
+
+            return dataTable;
+
         }
     }
 }
