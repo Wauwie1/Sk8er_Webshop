@@ -10,34 +10,56 @@
 <br />
 <div class="container">
 
-    <div class="row">
-        
-        @if (Model.products.Count == 0)
-        {
+
+
+    @if (Model.Products.Count == 0)
+    {
+        <div class="body">
             <p>Er is niks gevonden!</p>
-        }
-        else
-        {
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
 
-            foreach (var product in Model.products)
-             {
+                <div class="col-md-3">
+                    <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id>
+                        <div class="card text-white div-center">
+                            <img class="card-img" src=@product.ImgURL alt=@product.Name>
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">@product.Name</h5>
+                                <p>€@product.Price</p>
+                            </div>
+                        </div>
+                    </a>
 
-                 <div class="col-md-3">
-                     <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id>
-                         <div class="card text-white div-center">
-                             <img class="card-img" src=@product.ImgURL alt=@product.Name>
-                             <div class="card-img-overlay">
-                                 <h5 class="card-title">@product.Name</h5>
-                                 <p>€@product.Price</p>
-                             </div>
-                         </div>
-                     </a>
+                </div>
+            }
+        </div>
+        <br/>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
 
-                 </div>
-             }
-        }
-    </div>
+                <div class="col"></div>
 
+                <div class="col">
+            
+                    <p class="text-lg-center">
+                        <a asp-controller="Product" asp-action="All" asp-route-page=@Model.PrevPage >
+                            <img src="~/Resources/001-back.png" /></a>
+                            Page: @Model.Page
+                            <a asp-controller="Product" asp-action="All" asp-route-page=@Model.NextPage asp-route-search=@Model.Search> <img src="~/Resources/002-right-arrow.png" /> </a>
+</p>
+            
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        <br />
+        
+    }
 </div>
 
 <br />

@@ -16,13 +16,26 @@ namespace Sk8er_Webshop.Controllers
             return RedirectToAction("All");
         }
 
-        public IActionResult All(string search)
+        public IActionResult All(string search, int page = 0)
         {
             var viewModel = new AllProductViewModel();
-            viewModel.products = ProductLogic.GetSearchedProducts(search);
+            viewModel.Page = page;
+            viewModel.Search = search;
+            if (search != null)
+            {
+                
+                viewModel.Products = ProductLogic.GetSearchedProducts(search,  page);
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+            else
+            {
+                viewModel.Products = ProductLogic.GetAllProducts(page);
+                return View(viewModel);
+            }
         }
+
+        
 
         public IActionResult Details(int id)
         {

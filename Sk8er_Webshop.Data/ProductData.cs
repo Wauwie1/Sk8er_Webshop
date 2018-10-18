@@ -33,36 +33,36 @@ namespace Sk8er_Webshop.Data
             return productReturn;
         }
 
-        public static List<Product> GetAllProducts()
+        public static List<Product> GetAllProducts(int page)
         {
-            string query = "EXEC GetAllProducts";
+            string query = string.Format("EXEC GetAllProductsPage @Page = {0}", page);
             DataTable dataTable = DatabaseConnector.GetDataTable(query);
 
-            List<Product> returnList = new List<Product>();
+            List<Product> productList = new List<Product>();
 
             foreach (DataRow row in dataTable.Rows)
             {
 
                 Product product = CreateProductInstance(row);
-                returnList.Add(product);
+                productList.Add(product);
             }
 
-            return returnList;
+            return productList;
         }
 
-        public static List<Product> GetSearchedProducts(string search)
+        public static List<Product> GetSearchedProducts(string search, int page)
         {
-            string query = string.Format("EXEC GetSearchedProducts @Search = {0}", search);
+            string query = string.Format("EXEC GetSearchedProductsPage @Search = {0}, @Page = {1}", search, page);
             DataTable dataTable = DatabaseConnector.GetDataTable(query);
 
-            List<Product> returnList = new List<Product>();
+            List<Product> productList = new List<Product>();
             foreach (DataRow row in dataTable.Rows)
             {
                 Product product = CreateProductInstance(row);
-                returnList.Add(product);
+                productList.Add(product);
             }
 
-            return returnList;
+            return productList;
 
         }
 

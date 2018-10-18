@@ -24,13 +24,13 @@ namespace Sk8er_Webshop.Logic
             }
         }
 
-        public static List<Product> GetAllProducts()
+        public static List<Product> GetAllProducts(int page)
         {
-            return ProductData.GetAllProducts();
+            return ProductData.GetAllProducts(page);
         }
-        public static List<Product> GetSearchedProducts(string search)
+        public static List<Product> GetSearchedProducts(string search, int page)
         {
-            return ProductData.GetSearchedProducts(search);
+            return ProductData.GetSearchedProducts(search, page);
         }
     }
 }
