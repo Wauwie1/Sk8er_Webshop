@@ -19,29 +19,11 @@ namespace Sk8er_Webshop.Data
             if (dataTable.Rows.Count > 0)
             {
                 DataRow row = dataTable.Rows[0];
-                
-           
-                string name = row["Name"].ToString();
-                string collection = row["Collection"].ToString();
-                string description = row["Description"].ToString();
-                int ID = (int)row["ProductKey"];
-                string imgURL = row["ImgURL"].ToString();
-                decimal price = (decimal)row["Price"];
-                string productType = row["ProductType"].ToString();
 
-                Product temp = new Product()
-                {
-                    Name = name,
-                    Collection = collection,
-                    Description = description,
-                    Id = ID,
-                    ImgURL = imgURL,
-                    Price = price,
-                    ProductType = productType,
 
-                };
 
-                productReturn = temp;
+                Product product = CreateProductInstance(row);
+                productReturn = product;
             }
             else
             {
@@ -60,30 +42,53 @@ namespace Sk8er_Webshop.Data
 
             foreach (DataRow row in dataTable.Rows)
             {
-                string name = row["Name"].ToString();
-                string collection = row["Collection"].ToString();
-                string description = row["Description"].ToString();
-                int ID = (int)row["ProductKey"];
-                string imgURL = row["ImgURL"].ToString();
-                decimal price = (decimal)row["Price"];
-                string productType = row["ProductType"].ToString();
 
-                Product temp = new Product()
-                {
-                    Name = name,
-                    Collection = collection,
-                    Description = description,
-                    Id = ID,
-                    ImgURL = imgURL,
-                    Price = price,
-                    ProductType = productType,
-
-                };
-
-                returnList.Add(temp);
+                Product product = CreateProductInstance(row);
+                returnList.Add(product);
             }
 
             return returnList;
+        }
+
+        public static List<Product> GetSearchedProducts(string search)
+        {
+            string query = string.Format("EXEC GetSearchedProducts @Search = {0}", search);
+            DataTable dataTable = DatabaseConnector.GetDataTable(query);
+
+            List<Product> returnList = new List<Product>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Product product = CreateProductInstance(row);
+                returnList.Add(product);
+            }
+
+            return returnList;
+
+        }
+
+        private static Product CreateProductInstance(DataRow row)
+        {
+            string name = row["Name"].ToString();
+            string collection = row["Collection"].ToString();
+            string description = row["Description"].ToString();
+            int ID = (int)row["ProductKey"];
+            string imgURL = row["ImgURL"].ToString();
+            decimal price = (decimal)row["Price"];
+            string productType = row["ProductType"].ToString();
+
+            Product product = new Product()
+            {
+                Name = name,
+                Collection = collection,
+                Description = description,
+                Id = ID,
+                ImgURL = imgURL,
+                Price = price,
+                ProductType = productType,
+
+            };
+
+            return product;
         }
     }
 }

@@ -11,22 +11,30 @@
 <div class="container">
 
     <div class="row">
-
-        @foreach (var product in Model.products)
+        
+        @if (Model.products.Count == 0)
+        {
+            <p>Er is niks gevonden!</p>
+        }
+        else
         {
 
-            <div class="col-md-3">
-                <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id>
-                    <div class="card text-white div-center">
-                        <img class="card-img" src=@product.ImgURL alt=@product.Name>
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">@product.Name</h5>
-                            <p>€@product.Price</p>
-                        </div>
-                    </div>
-                </a>
+            foreach (var product in Model.products)
+             {
 
-            </div>
+                 <div class="col-md-3">
+                     <a asp-controller="Product" asp-action="Details" asp-route-id=@product.Id>
+                         <div class="card text-white div-center">
+                             <img class="card-img" src=@product.ImgURL alt=@product.Name>
+                             <div class="card-img-overlay">
+                                 <h5 class="card-title">@product.Name</h5>
+                                 <p>€@product.Price</p>
+                             </div>
+                         </div>
+                     </a>
+
+                 </div>
+             }
         }
     </div>
 

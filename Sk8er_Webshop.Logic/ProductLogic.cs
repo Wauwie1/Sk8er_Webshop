@@ -28,5 +28,9 @@ namespace Sk8er_Webshop.Logic
         {
             return ProductData.GetAllProducts();
         }
+        public static List<Product> GetSearchedProducts(string search)
+        {
+            return ProductData.GetSearchedProducts(search);
+        }
     }
 }
