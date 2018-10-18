@@ -47,7 +47,7 @@
                 <div class="col">
             
                     <p class="text-lg-center">
-                        <a asp-controller="Product" asp-action="All" asp-route-page=@Model.PrevPage >
+                        <a asp-controller="Product" asp-action="All" asp-route-page=@Model.PrevPage asp-route-search=@Model.Search>
                             <img src="~/Resources/001-back.png" /></a>
                             Page: @Model.Page
                             <a asp-controller="Product" asp-action="All" asp-route-page=@Model.NextPage asp-route-search=@Model.Search> <img src="~/Resources/002-right-arrow.png" /> </a>
