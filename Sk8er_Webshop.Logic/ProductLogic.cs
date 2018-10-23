@@ -5,6 +5,7 @@ using System.Text;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Models;
 
+
 namespace Sk8er_Webshop.Logic
 {
     public static class ProductLogic
@@ -24,13 +25,26 @@ namespace Sk8er_Webshop.Logic
             }
         }
 
-        public static List<Product> GetAllProducts(int page)
+        private static List<Product> GetAllProducts(int page)
         {
             return ProductData.GetAllProducts(page);
         }
-        public static List<Product> GetSearchedProducts(string search, int page)
+        private static List<Product> GetSearchedProducts(string search, int page)
         {
             return ProductData.GetSearchedProducts(search, page);
         }
+
+        public static List<Product> GetProducts(string search, int page)
+        {
+            if (search != null)
+            {
+                return GetSearchedProducts(search, page);
+            }
+            else
+            {
+                return GetAllProducts(page); 
+            }
+        }
+
     }
 }

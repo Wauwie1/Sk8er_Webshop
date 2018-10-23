@@ -18,21 +18,14 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult All(string search, int page = 0)
         {
-            var viewModel = new AllProductViewModel();
-            viewModel.Page = page;
-            viewModel.Search = search;
-            if (search != null)
+            AllProductViewModel viewModel = new AllProductViewModel
             {
-                
-                viewModel.Products = ProductLogic.GetSearchedProducts(search,  page);
+                Page = page,
+                Search = search,
+                Products = ProductLogic.GetProducts(search, page)
+            };
 
-                return View(viewModel);
-            }
-            else
-            {
-                viewModel.Products = ProductLogic.GetAllProducts(page);
-                return View(viewModel);
-            }
+            return View(viewModel);
         }
 
         
