@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using Sk8er_Webshop.Data;
@@ -21,6 +22,14 @@ namespace Sk8er_Webshop.Logic
             }
             else
             {
+                //Removes sizes which are out of stock
+                foreach (var size in product.Stock.Sizes.ToList())
+                {
+                    if (size.Amount == 0)
+                    {
+                        product.Stock.Sizes.Remove(size);
+                    }
+                }
                 return product;
             }
         }

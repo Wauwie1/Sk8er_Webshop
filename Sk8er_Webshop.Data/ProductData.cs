@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Sk8er_Webshop.Models;
+using Sk8er_Webshop.Data;
 
 namespace Sk8er_Webshop.Data
 {
@@ -20,8 +21,6 @@ namespace Sk8er_Webshop.Data
             if (dataTable.Rows.Count > 0)
             {
                 DataRow row = dataTable.Rows[0];
-
-
 
                 Product product = CreateProductInstance(row);
                 productReturn = product;
@@ -77,6 +76,8 @@ namespace Sk8er_Webshop.Data
             decimal price = (decimal)row["Price"];
             string productType = row["ProductType"].ToString();
 
+            Stock stock = StockData.GetStockByProductId(ID);
+
             Product product = new Product()
             {
                 Name = name,
@@ -86,6 +87,7 @@ namespace Sk8er_Webshop.Data
                 ImgURL = imgURL,
                 Price = price,
                 ProductType = productType,
+                Stock = stock
 
             };
 

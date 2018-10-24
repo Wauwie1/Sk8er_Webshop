@@ -2,9 +2,8 @@
 
 namespace Sk8er_Webshop.Models
 {
-    public class Product
+    public class Product : AbstractModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -15,6 +14,8 @@ namespace Sk8er_Webshop.Models
         public string ProductType { get; set; }
 
         public string ImgURL { get; set; }
+
+        public Stock Stock { get; set; }
 
     }
 }

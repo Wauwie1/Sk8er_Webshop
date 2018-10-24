@@ -21,11 +21,11 @@
                 <div class="form-group">
                     <label for="selectSize">Selecteer een maat:</label>
                     <select class="form-control" id="selectSize">
-                        <option>XS</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
+                        @foreach (var size in Model.Stock.Sizes)
+                        {
+                            
+                            <option>@size.SizeType</option>
+                        }
                     </select>
                     <br />
                     <h3>€@Model.Price</h3>
