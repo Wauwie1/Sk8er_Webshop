@@ -16,6 +16,8 @@ namespace Sk8er_Webshop.Logic
            
             Product product = ProductData.GetProductById(id);
 
+
+            //If no product found
             if (product == null)
             {
                 throw new NullReferenceException("No product with this ID has been found.");
