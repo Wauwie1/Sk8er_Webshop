@@ -25,21 +25,19 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Product" asp-action="All">Products</a>
+                            <a class="nav-link" asp-area="" asp-controller="Product" asp-action="All">Alle Producten</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
+                                Categorieën
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a asp-controller="Product" asp-action="All" asp-route-category="Shirt" class="dropdown-item">Shirts</a>
+                                <a asp-controller="Product" asp-action="All" asp-route-category="Broek" class="dropdown-item">Broeken</a>
+                                <a asp-controller="Product" asp-action="All" asp-route-category="Trui" class="dropdown-item">Truien</a>
+                                <a asp-controller="Product" asp-action="All" asp-route-category="Jas" class="dropdown-item">Jassen</a>
+
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
                     </ul>
                     <!--Search bar-->

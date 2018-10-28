@@ -16,19 +16,18 @@ namespace Sk8er_Webshop.Controllers
             return RedirectToAction("All");
         }
 
-        public IActionResult All(string search, int page = 0)
+        public IActionResult All(string search, string category, int page = 0)
         {
             AllProductViewModel viewModel = new AllProductViewModel
             {
                 Page = page,
+                Category = category,
                 Search = search,
-                Products = ProductLogic.GetProducts(search, page)
+                Products = ProductLogic.GetProducts(search, category, page)
             };
 
             return View(viewModel);
         }
-
-        
 
         public IActionResult Details(int id)
         {

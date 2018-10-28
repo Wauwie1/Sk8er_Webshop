@@ -36,6 +36,26 @@ namespace Sk8er_Webshop.Logic
             }
         }
 
+        public static List<Product> GetProducts(string search, string category, int page)
+        {
+            if (search != null)
+            {
+                return GetSearchedProducts(search, page);
+            }else if (category != null)
+            {
+                return GetProductsCategory(category, page);
+            }
+            else
+            {
+                return GetAllProducts(page); 
+            }
+        }
+
+        private static List<Product> GetProductsCategory(string category, int page)
+        {
+            return ProductData.GetProductsCategory(category, page);
+        }
+
         private static List<Product> GetAllProducts(int page)
         {
             return ProductData.GetAllProducts(page);
@@ -43,18 +63,6 @@ namespace Sk8er_Webshop.Logic
         private static List<Product> GetSearchedProducts(string search, int page)
         {
             return ProductData.GetSearchedProducts(search, page);
-        }
-
-        public static List<Product> GetProducts(string search, int page)
-        {
-            if (search != null)
-            {
-                return GetSearchedProducts(search, page);
-            }
-            else
-            {
-                return GetAllProducts(page); 
-            }
         }
 
     }

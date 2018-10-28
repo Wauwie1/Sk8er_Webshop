@@ -20,6 +20,8 @@ namespace Sk8er_Webshop.ViewModels
             set => PrevPage = value;
         }
         public string Search { get; set; }
+
+        public string Category { get; set; }
         public List<Product> Products { get; set; }
     }
 }

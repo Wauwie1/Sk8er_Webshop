@@ -47,11 +47,15 @@
                 <div class="col">
             
                     <p class="text-lg-center">
-                        <a asp-controller="Product" asp-action="All" asp-route-page=@Model.PrevPage asp-route-search=@Model.Search>
-                            <img src="~/Resources/001-back.png" /></a>
-                            Page: @Model.Page
-                            <a asp-controller="Product" asp-action="All" asp-route-page=@Model.NextPage asp-route-search=@Model.Search> <img src="~/Resources/002-right-arrow.png" /> </a>
-</p>
+                        
+                        @if (Model.Page > 0)
+                        {
+                            <a asp-controller="Product" asp-action="All" asp-route-page=@Model.PrevPage asp-route-search=@Model.Search asp-route-category="@Model.Category">
+                                <img src="~/Resources/001-back.png"/></a>
+                        }
+                        Page: @Model.NextPage
+                        <a asp-controller="Product" asp-action="All" asp-route-page=@Model.NextPage asp-route-search=@Model.Search asp-route-category="@Model.Category"> <img src="~/Resources/002-right-arrow.png"/> </a>
+                    </p>
             
                 </div>
                 <div class="col"></div>
