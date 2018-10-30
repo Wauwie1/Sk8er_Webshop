@@ -9,19 +9,18 @@ namespace Sk8er_Webshop.Data
     {
         public static Stock GetStockByProductId(int id)
         {
-            string query = string.Format("EXEC GetStockByProductId @Id = {0};", id);
+            var query = string.Format("EXEC GetStockByProductId @Id = {0};", id);
 
-            DataTable dataTable = DatabaseConnector.GetDataTable(query);
+            var dataTable = DatabaseConnector.GetDataTable(query);
 
             Stock stockReturn;
 
             if (dataTable.Rows.Count > 0)
             {
-                DataRow row = dataTable.Rows[0];
+                var row = dataTable.Rows[0];
 
 
-
-                Stock stock = CreateStockInstance(row);
+                var stock = CreateStockInstance(row);
                 stockReturn = stock;
             }
             else
@@ -34,16 +33,15 @@ namespace Sk8er_Webshop.Data
 
         public static List<Stock> GetAllStock()
         {
-            string storedProcedure = "EXEC GetAllStock";
+            var storedProcedure = "EXEC GetAllStock";
 
-            DataTable dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
 
-            List<Stock> returnList = new List<Stock>();
+            var returnList = new List<Stock>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-
-                Stock stock = CreateStockInstance(row);
+                var stock = CreateStockInstance(row);
                 returnList.Add(stock);
             }
 
@@ -52,8 +50,8 @@ namespace Sk8er_Webshop.Data
 
         private static Stock CreateStockInstance(DataRow row)
         {
-            int ID = (int)row["StockKey"];
-            int productKey = (int)row["ProductKey"];
+            var ID = (int) row["StockKey"];
+            var productKey = (int) row["ProductKey"];
             string productName;
             try
             {
@@ -65,15 +63,15 @@ namespace Sk8er_Webshop.Data
                 productName = "";
             }
 
-            Size XS = new Size(EnumSizes.XS, (int)row["XS"]);
-            Size S = new Size(EnumSizes.S, (int)row["S"]);
-            Size M = new Size(EnumSizes.M, (int)row["M"]);
-            Size L = new Size(EnumSizes.L, (int)row["L"]);
-            Size XL = new Size(EnumSizes.XL, (int)row["XL"]);
-            Size XXL = new Size(EnumSizes.XXL, (int)row["XXL"]);
-            Size Other = new Size(EnumSizes.Other, (int)row["Other"]);
+            var XS = new Size(EnumSizes.XS, (int) row["XS"]);
+            var S = new Size(EnumSizes.S, (int) row["S"]);
+            var M = new Size(EnumSizes.M, (int) row["M"]);
+            var L = new Size(EnumSizes.L, (int) row["L"]);
+            var XL = new Size(EnumSizes.XL, (int) row["XL"]);
+            var XXL = new Size(EnumSizes.XXL, (int) row["XXL"]);
+            var Other = new Size(EnumSizes.Other, (int) row["Other"]);
 
-            Stock stock = new Stock()
+            var stock = new Stock
             {
                 Id = ID,
                 ProductKey = productKey,

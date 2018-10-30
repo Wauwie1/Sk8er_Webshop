@@ -6,28 +6,27 @@
 
 <br/>
 <div class="container">
-    
+
     <div class="row">
         <div class="col-lg-7">
-            <img class="img-fluid" src=@Model.ImgURL alt="Photo Product" />
+            <img class="img-fluid" src="@Model.ImgURL" alt="Photo Product"/>
         </div>
 
         <div class="col">
             <br/>
             <h1>@Model.Name</h1>
             <p>@Model.Description</p>
-            
+
             <form>
                 <div class="form-group">
                     <label for="selectSize">Selecteer een maat:</label>
                     <select class="form-control" id="selectSize">
                         @foreach (var size in Model.Stock.Sizes)
                         {
-                            
                             <option>@size.SizeType</option>
                         }
                     </select>
-                    <br />
+                    <br/>
                     <h3>€@Model.Price</h3>
                     <br/>
                     <button type="button" class="btn btn-default">Toevoegen aan winkelmand</button>
@@ -38,4 +37,3 @@
     </div>
 </div>
 <br/>
-

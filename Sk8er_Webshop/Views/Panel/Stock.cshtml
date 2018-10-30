@@ -6,19 +6,19 @@
 
 <div class="container">
     <div class="row">
-        <br />
+        <br/>
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <h5 class="text-center">Voorraad: </h5>
         </div>
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
-        <br />
+        <br/>
     </div>
     <div class="row">
-        
+
     </div>
-    <br />
+    <br/>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -27,49 +27,48 @@
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
     </div>
-    <br />
+    <br/>
     <div class="row">
-        <br />
+        <br/>
         <div class="col-md-3"></div>
         <div class="col-md-5">
-           
+
             <table class="table" id="StockTable">
                 <thead>
-                    <tr>
-                        <td>Product Id</td>
-                        <td>Name</td>
-                        <td>XS</td>
-                        <td>S</td>
-                        <td>M</td>
-                        <td>L</td>
-                        <td>XL</td>
-                        <td>XXL</td>
-                        <td>Other</td>
-                    </tr>
+                <tr>
+                    <td>Product Id</td>
+                    <td>Name</td>
+                    <td>XS</td>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>L</td>
+                    <td>XL</td>
+                    <td>XXL</td>
+                    <td>Other</td>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var stock in Model.StockList)
-                    {
-                        <tr>
-                            <td>@stock.ProductKey</td>
-                            <td>@stock.ProductName</td>
-                            @foreach (var size in stock.Sizes)
-                            {
-                                <td>@size.Amount</td>
-                            }
+                @foreach (var stock in Model.StockList)
+                {
+                    <tr>
+                        <td>@stock.ProductKey</td>
+                        <td>@stock.ProductName</td>
+                        @foreach (var size in stock.Sizes)
+                        {
+                            <td>@size.Amount</td>
+                        }
 
 
-                        </tr>
-                    }
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
         <div class="col-md-4"></div>
-        <br />
+        <br/>
     </div>
     <div class="row">
-        
-    </div>
-    <br />
-</div>
 
+    </div>
+    <br/>
+</div>

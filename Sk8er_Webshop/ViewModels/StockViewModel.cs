@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.ViewModels
