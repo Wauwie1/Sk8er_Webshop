@@ -20,3 +20,15 @@
         }
     }
 }
+
+function AddItemToBasket(id, amount) {
+
+    var orderItem = {
+        Id: id,
+        Amount: amount,
+        Size: $("#selectSize option:selected").text()
+    };
+
+    alert("ID: " + orderItem.Id + ". Amount: " + orderItem.Amount + ". Size: " + orderItem.Size);
+}
+
