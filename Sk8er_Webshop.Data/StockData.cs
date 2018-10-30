@@ -32,10 +32,39 @@ namespace Sk8er_Webshop.Data
             return stockReturn;
         }
 
+        public static List<Stock> GetAllStock()
+        {
+            string storedProcedure = "EXEC GetAllStock";
+
+            DataTable dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+
+            List<Stock> returnList = new List<Stock>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+
+                Stock stock = CreateStockInstance(row);
+                returnList.Add(stock);
+            }
+
+            return returnList;
+        }
+
         private static Stock CreateStockInstance(DataRow row)
         {
             int ID = (int)row["StockKey"];
             int productKey = (int)row["ProductKey"];
+            string productName;
+            try
+            {
+                productName = (string) row["Name"];
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                productName = "";
+            }
+
             Size XS = new Size(EnumSizes.XS, (int)row["XS"]);
             Size S = new Size(EnumSizes.S, (int)row["S"]);
             Size M = new Size(EnumSizes.M, (int)row["M"]);
@@ -48,6 +77,7 @@ namespace Sk8er_Webshop.Data
             {
                 Id = ID,
                 ProductKey = productKey,
+                ProductName = productName,
                 Sizes = new List<Size>()
             };
             stock.Sizes.Add(XS);

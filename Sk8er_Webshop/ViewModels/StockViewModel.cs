@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Sk8er_Webshop.Models;
+
+namespace Sk8er_Webshop.ViewModels
+{
+    public class StockViewModel
+    {
+        public List<Stock> StockList { get; set; }
+    }
+}
