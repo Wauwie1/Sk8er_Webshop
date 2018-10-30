@@ -21,14 +21,27 @@
     }
 }
 
+var Basket = [];
 function AddItemToBasket(id, amount) {
-
+    $("#text_added").hide();
     var orderItem = {
         Id: id,
         Amount: amount,
         Size: $("#selectSize option:selected").text()
     };
 
-    alert("ID: " + orderItem.Id + ". Amount: " + orderItem.Amount + ". Size: " + orderItem.Size);
+    Basket = JSON.parse(localStorage.getItem("BasketKey"));
+
+    if (!Array.isArray(Basket)) {
+        Basket = [];
+        Basket.push(orderItem);
+    } else {
+        Basket.push(orderItem);
+
+    }
+    localStorage.setItem("BasketKey", JSON.stringify(Basket));
+
+    $("#text_added").fadeIn(500);
+
 }
 
