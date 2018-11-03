@@ -16,24 +16,33 @@
             <br/>
             <h1>@Model.Name</h1>
             <p>@Model.Description</p>
+            
+        @if (Model.Stock.Sizes.Count > 0)
+        {
+        <form>
+            <div class="form-group">
+                <label for="selectSize">Selecteer een maat:</label>
 
-            <form>
-                <div class="form-group">
-                    <label for="selectSize">Selecteer een maat:</label>
-                    <select class="form-control" id="selectSize">
-                        @foreach (var size in Model.Stock.Sizes)
-                        {
-                            <option value="@size.SizeType">@size.SizeType</option>
-                        }
-                    </select>
-                    <br/>
-                    <h3>€@Model.Price</h3>
-                    <br/>
-                    <button type="button" onclick="AddItemToBasket(@Model.Id, 1)" class="btn btn-default">Toevoegen aan winkelmand</button>
 
-                </div>
+                <select class="form-control" id="selectSize">
+                    @foreach (var size in Model.Stock.Sizes)
+                    {
+                        <option value="@size.SizeType">@size.SizeType</option>
+                    }
+                </select>
+                <br/>
+                <h3>€@Model.Price</h3>
+                <br/>
+                <button type="button" onclick="AddItemToBasket(@Model.Id, 1)" class="btn btn-default">Toevoegen aan winkelmand</button>
 
-            </form>
+            </div>
+
+        </form>
+        }
+         else
+            {
+                <p><em>Dit product is helaas uitverkocht!</em></p>
+            }
             <h6 id="text_added" style="display: none">Toegevoegd aan winkelmand.</h6>
         </div>
     </div>
