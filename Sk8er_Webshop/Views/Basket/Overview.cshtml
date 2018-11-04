@@ -1,4 +1,4 @@
-﻿
+﻿@model Sk8er_Webshop.ViewModels.BasketViewModel
 @{
     ViewData["Title"] = "Overview";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,12 +17,16 @@
         </tr>
         </thead>
         <tbody>
+        @foreach (var item in Model.BasketItems)
+        {
             <tr>
-                <td>Test</td>
-                <td>test123</td>
-                <td>2</td>
-                <td>30,-</td>
+                
+                <td><img class="basket-img" width="77" height="102" src=@item.Product.ImgURL/></td>
+                <td>@item.Product.Name</td>
+                <td>@item.Amount</td>
+                <td>@item.Product.Price</td>
             </tr>
+        }
         </tbody>
     </table>
 </div>

@@ -10,5 +10,7 @@ namespace Sk8er_Webshop.Models
         public int Amount { get; set; }
 
         public string Size { get; set; }
+
+        public Product Product { get; set; }
     }
 }
