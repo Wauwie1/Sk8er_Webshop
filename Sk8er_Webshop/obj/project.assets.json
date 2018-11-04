@@ -12267,6 +12267,7 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.5",
+      "Newtonsoft.Json >= 11.0.2",
       "Sk8er_Webshop.Logic >= 1.0.0",
       "Sk8er_Webshop.Models >= 1.0.0"
     ]
@@ -12333,6 +12334,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.5, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[11.0.2, )"
           }
         },
         "imports": [

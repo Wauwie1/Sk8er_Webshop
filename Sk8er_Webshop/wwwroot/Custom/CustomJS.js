@@ -30,8 +30,11 @@ function AddItemToBasket(id, amount) {
         Size: $("#selectSize option:selected").text()
     };
 
-    Basket = JSON.parse(localStorage.getItem("BasketKey"));
-
+    //GET BASKET
+    var JSONBasket = Cookies.get("BasketCookie");
+    alert(JSONBasket);
+    Basket = JSON.parse(JSONBasket);
+   
     if (!Array.isArray(Basket)) {
         Basket = [];
         Basket.push(orderItem);
@@ -39,9 +42,12 @@ function AddItemToBasket(id, amount) {
         Basket.push(orderItem);
 
     }
-    localStorage.setItem("BasketKey", JSON.stringify(Basket));
+
+    JSONBasket = JSON.stringify(Basket);
+    alert(JSONBasket);
+    //SET BASKET
+    Cookies.set("BasketCookie", JSONBasket);
 
     $("#text_added").fadeIn(500);
 
 }
-
