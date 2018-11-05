@@ -36,7 +36,28 @@ namespace Sk8er_Webshop.Data
             return productReturn;
         }
 
-        private static Product CreateProductInstance(DataRow row)
+        public IEnumerable<Product> GetAll(int page)
+        {
+            var storedProcedure = string.Format("EXEC GetAllProductsPage @Page = {0}", page);
+            return GetProductList(storedProcedure);
+        }
+
+        public IEnumerable<Product> GetSearchedProducts(string search, int page)
+        {
+            var storedProcedure =
+                string.Format("EXEC GetSearchedProductsPage @Search = {0}, @Page = {1}", search, page);
+            return GetProductList(storedProcedure);
+        }
+
+        public IEnumerable<Product> GetCategoryProducts(string category, int page)
+        {
+            var storedProcedure =
+                string.Format("EXEC GetProductsCategory @ProductType = {0}, @Page = {1}", category, page);
+            return GetProductList(storedProcedure);
+        }
+
+
+        private Product CreateProductInstance(DataRow row)
         {
             var name = row["Name"].ToString();
             var collection = row["Collection"].ToString();
@@ -46,6 +67,7 @@ namespace Sk8er_Webshop.Data
             var price = (decimal)row["Price"];
             var productType = row["ProductType"].ToString();
 
+            //todo: Make stock data use repo pattern
             var stock = StockData.GetStockByProductId(ID);
 
             var product = new Product
@@ -61,6 +83,21 @@ namespace Sk8er_Webshop.Data
             };
 
             return product;
+        }
+
+        private List<Product> GetProductList(string storedProcedure)
+        {
+            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+
+            var productList = new List<Product>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var product = CreateProductInstance(row);
+                productList.Add(product);
+            }
+
+            return productList;
         }
     }
 }

@@ -29,26 +29,6 @@ namespace Sk8er_Webshop.Data
             return productReturn;
         }
 
-        public static List<Product> GetAllProducts(int page)
-        {
-            var storedProcedure = string.Format("EXEC GetAllProductsPage @Page = {0}", page);
-            return GetProductList(storedProcedure);
-        }
-
-        public static List<Product> GetSearchedProducts(string search, int page)
-        {
-            var storedProcedure =
-                string.Format("EXEC GetSearchedProductsPage @Search = {0}, @Page = {1}", search, page);
-            return GetProductList(storedProcedure);
-        }
-
-        public static List<Product> GetProductsCategory(string category, int page)
-        {
-            var storedProcedure =
-                string.Format("EXEC GetProductsCategory @ProductType = {0}, @Page = {1}", category, page);
-            return GetProductList(storedProcedure);
-        }
-
         private static Product CreateProductInstance(DataRow row)
         {
             var name = row["Name"].ToString();
@@ -76,19 +56,5 @@ namespace Sk8er_Webshop.Data
             return product;
         }
 
-        private static List<Product> GetProductList(string storedProcedure)
-        {
-            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
-
-            var productList = new List<Product>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var product = CreateProductInstance(row);
-                productList.Add(product);
-            }
-
-            return productList;
-        }
     }
 }

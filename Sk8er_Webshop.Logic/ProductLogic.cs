@@ -14,14 +14,10 @@ namespace Sk8er_Webshop.Logic
             this.repository = repository;
         }
 
-
-
-
-
-
-
-
-
+        public List<Product> GetAll(int page)
+        {
+            return repository.GetAll(page).ToList();
+        }
         public Product GetById(int id)
         {
             Product product = repository.GetById(id);
@@ -44,47 +40,47 @@ namespace Sk8er_Webshop.Logic
             return product;
         }
 
-
-
-
-
-        public static Product GetProductById(int id)
+        public List<Product> GetSearchedProducts(string search, int page)
         {
-            var product = ProductData.GetProductById(id);
+            List<Product> products;
 
+            if (search == null)
+            {
+                products = new List<Product>();
+            }
+            else
+            {
+                products = repository.GetSearchedProducts(search, page).ToList();
+            }
 
-            //If no product found
-            if (product == null) throw new NullReferenceException("No product with this ID has been found.");
-
-            //Removes sizes which are out of stock
-            foreach (var size in product.Stock.Sizes.ToList())
-                if (size.Amount == 0)
-                    product.Stock.Sizes.Remove(size);
-            return product;
+            return products;
         }
 
-        public static List<Product> GetProducts(string search, string category, int page)
-        {
-            if (search != null)
-                return GetSearchedProducts(search, page);
-            if (category != null)
-                return GetProductsCategory(category, page);
-            return GetAllProducts(page);
-        }
 
-        private static List<Product> GetProductsCategory(string category, int page)
-        {
-            return ProductData.GetProductsCategory(category, page);
-        }
+        //public static List<Product> GetProducts(string search, string category, int page)
+        //{
+        //    if (category != null)
+        //        return GetProductsCategory(category, page);
+        //    return GetAllProducts(page);
+        //}
 
-        private static List<Product> GetAllProducts(int page)
-        {
-            return ProductData.GetAllProducts(page);
-        }
+        //    private static List<Product> GetProductsCategory(string category, int page)
+        //    {
+        //        return ProductData.GetProductsCategory(category, page);
+        //    }
 
-        private static List<Product> GetSearchedProducts(string search, int page)
+        //    private static List<Product> GetAllProducts(int page)
+        //    {
+        //        return ProductData.GetAllProducts(page);
+        //    }
+
+        //    private static List<Product> GetSearchedProducts(string search, int page)
+        //    {
+        //        return ProductData.GetSearchedProducts(search, page);
+        //    }
+        public List<Product> GetCategoryProducts(string category, int page)
         {
-            return ProductData.GetSearchedProducts(search, page);
+            return repository.GetCategoryProducts(category, page).ToList();
         }
     }
 }

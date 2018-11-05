@@ -32,10 +32,10 @@
                                 Categorieën
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a asp-controller="Product" asp-action="All" asp-route-category="Shirt" class="dropdown-item">Shirts</a>
-                                <a asp-controller="Product" asp-action="All" asp-route-category="Broek" class="dropdown-item">Broeken</a>
-                                <a asp-controller="Product" asp-action="All" asp-route-category="Trui" class="dropdown-item">Truien</a>
-                                <a asp-controller="Product" asp-action="All" asp-route-category="Jas" class="dropdown-item">Jassen</a>
+                                <a asp-controller="Product" asp-action="Category" asp-route-category="Shirt" class="dropdown-item">Shirts</a>
+                                <a asp-controller="Product" asp-action="Category" asp-route-category="Broek" class="dropdown-item">Broeken</a>
+                                <a asp-controller="Product" asp-action="Category" asp-route-category="Trui" class="dropdown-item">Truien</a>
+                                <a asp-controller="Product" asp-action="Category" asp-route-category="Jas" class="dropdown-item">Jassen</a>
 
                             </div>
                         </li>
@@ -44,7 +44,7 @@
                         <a asp-controller="Basket" asp-action="Overview"><img src="~/Resources/shopping-basket.png" width="40" height="40" style="margin-right: 15px;" /></a>
                     </div>
                     <!--Search bar-->
-                    <form asp-controller="Product" asp-action="All" method="get" class="form-inline my-2 my-lg-0">
+                    <form asp-controller="Product" asp-action="Search" method="get" class="form-inline my-2 my-lg-0">
                         <input name="search" class="form-control mr-sm-2" type="search" placeholder="Zoek een product" aria-label="Search">
                         <button class="btn my-2 my-sm-0" type="submit">Zoek</button>
                     </form>

@@ -8,20 +8,18 @@ namespace Sk8er_Webshop.Controllers
 {
     public class ProductController : Controller
     {
-        private ProductLogic logic = new ProductLogic(new ProductRepository(new ProductSQLContext()));
+        private readonly ProductLogic logic = new ProductLogic(new ProductRepository(new ProductSQLContext()));
         public IActionResult Index()
         {
             return RedirectToAction("All");
         }
 
-        public IActionResult All(string search, string category, int page = 0)
+        public IActionResult All(int page = 0)
         {
             var viewModel = new AllProductViewModel
             {
                 Page = page,
-                Category = category,
-                Search = search,
-                Products = ProductLogic.GetProducts(search, category, page)
+                Products = logic.GetAll(page)
             };
 
             return View(viewModel);
@@ -38,6 +36,30 @@ namespace Sk8er_Webshop.Controllers
             {
                 return Content(string.Format("An error occured: {0} \n {1}", ex.Message, ex.GetBaseException()));
             }
+        }
+
+        public IActionResult Search(string search, int page)
+        {
+            var viewModel = new AllProductViewModel
+            {
+                Page = page,
+                Search = search,
+                Products = logic.GetSearchedProducts(search, page)
+            };
+
+            return View(viewModel);
+        }
+
+        public IActionResult Category(string category, int page)
+        {
+            var viewModel = new AllProductViewModel
+            {
+                Page = page,
+                Category = category,
+                Products = logic.GetCategoryProducts(category, page)
+            };
+
+            return View(viewModel);
         }
     }
 }
