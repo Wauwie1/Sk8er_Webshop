@@ -21,19 +21,21 @@
     }
 }
 
-var Basket = [];
+
 function AddItemToBasket(id, amount) {
+    var Basket = [];
     $("#text_added").hide();
+
+    //Creates basketitem
     var orderItem = {
         Id: id,
         Amount: amount,
         Size: $("#selectSize option:selected").text()
     };
 
-    //GET BASKET
+    //Tries to get the basket if the cookie exists
     try {
         var JSONBasket = Cookies.get("BasketCookie");
-        alert(JSONBasket);
         Basket = JSON.parse(JSONBasket);
     } catch (err) {
         console.log(err.message);
@@ -47,11 +49,29 @@ function AddItemToBasket(id, amount) {
 
     }
 
+    //Save basket
     JSONBasket = JSON.stringify(Basket);
-    alert(JSONBasket);
-    //SET BASKET
     Cookies.set("BasketCookie", JSONBasket);
 
+    //Show text
     $("#text_added").fadeIn(500);
 
+}
+
+function RemoveItemFromBasket(id) {
+    //Set Basket from cookie
+    var Basket = [];
+    var JSONBasket = Cookies.get("BasketCookie");
+    Basket = JSON.parse(JSONBasket);
+
+    //Find item to be deleted and delete it
+    var index = Basket.findIndex(item => item.Id === id);
+    Basket.splice(index, 1);
+
+    //Save updated basket
+    JSONBasket = JSON.stringify(Basket);
+    Cookies.set("BasketCookie", JSONBasket);
+
+    //Reload page
+    location.reload();
 }
