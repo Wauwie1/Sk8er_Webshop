@@ -1,0 +1,74 @@
+﻿@model Sk8er_Webshop.ViewModels.StockViewModel
+@{
+    ViewData["Title"] = "Voorraad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <br/>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h5 class="text-center">Voorraad: </h5>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <br/>
+    </div>
+    <div class="row">
+
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <input type="text" id="searchStock" onkeyup="SearchStock()" placeholder="Zoek op id">
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br/>
+    <div class="row">
+        <br/>
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+
+            <table class="table" id="StockTable">
+                <thead>
+                <tr>
+                    <td>Product Id</td>
+                    <td>Name</td>
+                    <td>XS</td>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>L</td>
+                    <td>XL</td>
+                    <td>XXL</td>
+                    <td>Other</td>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var stock in Model.StockList)
+                {
+                    <tr>
+                        <td>@stock.ProductKey</td>
+                        <td>@stock.ProductName</td>
+                        @foreach (var size in stock.Sizes)
+                        {
+                            <td>@size.Amount</td>
+                        }
+
+
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4"></div>
+        <br/>
+    </div>
+    <div class="row">
+
+    </div>
+    <br/>
+</div>

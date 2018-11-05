@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sk8er_Webshop.Logic;
-using Sk8er_Webshop.Models;
 using Sk8er_Webshop.ViewModels;
 
 namespace Sk8er_Webshop.Controllers
@@ -18,7 +14,7 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult All(string search, string category, int page = 0)
         {
-            AllProductViewModel viewModel = new AllProductViewModel
+            var viewModel = new AllProductViewModel
             {
                 Page = page,
                 Category = category,
@@ -33,14 +29,13 @@ namespace Sk8er_Webshop.Controllers
         {
             try
             {
-                Product product = ProductLogic.GetProductById(id);
+                var product = ProductLogic.GetProductById(id);
                 return View(product);
             }
             catch (NullReferenceException e)
             {
                 return Content(string.Format("An error occured: {0} \n {1}", e.Message, e.GetBaseException()));
             }
-            
         }
     }
 }

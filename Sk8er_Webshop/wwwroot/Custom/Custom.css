@@ -41,6 +41,11 @@
 
 }
 
+.basket-img {
+    width: 100px;
+    height: 200px;
+}
+
 
 /*Bootstrap overrides:*/
 .navbar {

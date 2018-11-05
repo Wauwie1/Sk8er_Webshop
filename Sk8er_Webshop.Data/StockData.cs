@@ -9,19 +9,18 @@ namespace Sk8er_Webshop.Data
     {
         public static Stock GetStockByProductId(int id)
         {
-            string query = string.Format("EXEC GetStockByProductId @Id = {0};", id);
+            var query = string.Format("EXEC GetStockByProductId @Id = {0};", id);
 
-            DataTable dataTable = DatabaseConnector.GetDataTable(query);
+            var dataTable = DatabaseConnector.GetDataTable(query);
 
             Stock stockReturn;
 
             if (dataTable.Rows.Count > 0)
             {
-                DataRow row = dataTable.Rows[0];
+                var row = dataTable.Rows[0];
 
 
-
-                Stock stock = CreateStockInstance(row);
+                var stock = CreateStockInstance(row);
                 stockReturn = stock;
             }
             else
@@ -32,22 +31,51 @@ namespace Sk8er_Webshop.Data
             return stockReturn;
         }
 
+        public static List<Stock> GetAllStock()
+        {
+            var storedProcedure = "EXEC GetAllStock";
+
+            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+
+            var returnList = new List<Stock>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var stock = CreateStockInstance(row);
+                returnList.Add(stock);
+            }
+
+            return returnList;
+        }
+
         private static Stock CreateStockInstance(DataRow row)
         {
-            int ID = (int)row["StockKey"];
-            int productKey = (int)row["ProductKey"];
-            Size XS = new Size(EnumSizes.XS, (int)row["XS"]);
-            Size S = new Size(EnumSizes.S, (int)row["S"]);
-            Size M = new Size(EnumSizes.M, (int)row["M"]);
-            Size L = new Size(EnumSizes.L, (int)row["L"]);
-            Size XL = new Size(EnumSizes.XL, (int)row["XL"]);
-            Size XXL = new Size(EnumSizes.XXL, (int)row["XXL"]);
-            Size Other = new Size(EnumSizes.Other, (int)row["Other"]);
+            var ID = (int) row["StockKey"];
+            var productKey = (int) row["ProductKey"];
+            string productName;
+            try
+            {
+                productName = (string) row["Name"];
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                productName = "";
+            }
 
-            Stock stock = new Stock()
+            var XS = new Size(EnumSizes.XS, (int) row["XS"]);
+            var S = new Size(EnumSizes.S, (int) row["S"]);
+            var M = new Size(EnumSizes.M, (int) row["M"]);
+            var L = new Size(EnumSizes.L, (int) row["L"]);
+            var XL = new Size(EnumSizes.XL, (int) row["XL"]);
+            var XXL = new Size(EnumSizes.XXL, (int) row["XXL"]);
+            var Other = new Size(EnumSizes.Other, (int) row["Other"]);
+
+            var stock = new Stock
             {
                 Id = ID,
                 ProductKey = productKey,
+                ProductName = productName,
                 Sizes = new List<Size>()
             };
             stock.Sizes.Add(XS);
