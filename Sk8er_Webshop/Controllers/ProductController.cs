@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
 using Sk8er_Webshop.ViewModels;
 
@@ -7,6 +8,7 @@ namespace Sk8er_Webshop.Controllers
 {
     public class ProductController : Controller
     {
+        private ProductLogic logic = new ProductLogic(new ProductRepository(new ProductSQLContext()));
         public IActionResult Index()
         {
             return RedirectToAction("All");
@@ -29,12 +31,12 @@ namespace Sk8er_Webshop.Controllers
         {
             try
             {
-                var product = ProductLogic.GetProductById(id);
+                var product = logic.GetById((id));
                 return View(product);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException ex)
             {
-                return Content(string.Format("An error occured: {0} \n {1}", e.Message, e.GetBaseException()));
+                return Content(string.Format("An error occured: {0} \n {1}", ex.Message, ex.GetBaseException()));
             }
         }
     }

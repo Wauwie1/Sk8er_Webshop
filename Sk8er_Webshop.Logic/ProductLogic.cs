@@ -6,8 +6,48 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Logic
 {
-    public static class ProductLogic
+    public  class ProductLogic
     {
+        private ProductRepository repository;
+        public ProductLogic(ProductRepository repository)
+        {
+            this.repository = repository;
+        }
+
+
+
+
+
+
+
+
+
+        public Product GetById(int id)
+        {
+            Product product = repository.GetById(id);
+
+            //If no product found
+            if (product == null)
+            {
+                throw new NullReferenceException("No product with this ID has been found.");
+            }
+
+            //Removes sizes which are out of stock
+            foreach (var size in product.Stock.Sizes.ToList())
+            {
+                if (size.Amount == 0)
+                {
+                    product.Stock.Sizes.Remove(size);
+                }
+            }
+
+            return product;
+        }
+
+
+
+
+
         public static Product GetProductById(int id)
         {
             var product = ProductData.GetProductById(id);
