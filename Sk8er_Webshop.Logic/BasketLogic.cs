@@ -11,10 +11,17 @@ namespace Sk8er_Webshop.Logic
     {
         public static List<BasketItem> JSONToBasketItems(string JSONString)
         {
-            List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(JSONString);
+            if (JSONString != null)
+            {
+                List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(JSONString);
 
-            SetProducts(items);
-            return items;
+                SetProducts(items);
+                return items;
+            }
+            else
+            {
+                return new List<BasketItem>();
+            }
         }
 
         private static void SetProducts(List<BasketItem> items)

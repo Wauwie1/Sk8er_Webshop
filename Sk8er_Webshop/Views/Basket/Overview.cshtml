@@ -7,26 +7,33 @@
 
 
 <div class="d-flex justify-content-center table table-striped">
-    <table>
-        <thead>
-        <tr>
-            <td></td>
-            <td>Product</td>
-            <td>Amount</td>
-            <td>Price</td>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model.BasketItems)
-        {
+    @if (Model.BasketItems.Count > 0)
+    {
+        <table>
+            <thead>
             <tr>
-                
-                <td><img class="basket-img" width="77" height="102" src=@item.Product.ImgURL/></td>
-                <td>@item.Product.Name</td>
-                <td>@item.Amount</td>
-                <td>@item.Product.Price</td>
+                <td></td>
+                <td>Product</td>
+                <td>Amount</td>
+                <td>Price</td>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.BasketItems)
+            {
+                <tr>
+
+                    <td><img width="77" height="102" src=@item.Product.ImgURL/></td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Amount</td>
+                    <td>@item.Product.Price</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> Je hebt nog geen producten in je winkelmandje.</p>
+    }
 </div>

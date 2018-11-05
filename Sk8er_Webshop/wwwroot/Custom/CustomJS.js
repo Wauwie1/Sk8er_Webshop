@@ -31,10 +31,14 @@ function AddItemToBasket(id, amount) {
     };
 
     //GET BASKET
-    var JSONBasket = Cookies.get("BasketCookie");
-    alert(JSONBasket);
-    Basket = JSON.parse(JSONBasket);
-   
+    try {
+        var JSONBasket = Cookies.get("BasketCookie");
+        alert(JSONBasket);
+        Basket = JSON.parse(JSONBasket);
+    } catch (err) {
+        console.log(err.message);
+    }
+
     if (!Array.isArray(Basket)) {
         Basket = [];
         Basket.push(orderItem);

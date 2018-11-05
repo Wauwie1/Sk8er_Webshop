@@ -4633,6 +4633,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "Newtonsoft.Json": "11.0.2",
           "Sk8er_Webshop.Data": "1.0.0",
           "Sk8er_Webshop.Models": "1.0.0"
         },
