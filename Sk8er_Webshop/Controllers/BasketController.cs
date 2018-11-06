@@ -25,7 +25,6 @@ namespace Sk8er_Webshop.Controllers
             BasketViewModel viewModel = new BasketViewModel()
             {
                 BasketItems = logic.JSONToBasketItems(cookie),
-                TotalPrice = 0
             };
             return View(viewModel);
         }
