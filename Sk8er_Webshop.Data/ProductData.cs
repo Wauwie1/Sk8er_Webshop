@@ -39,7 +39,7 @@ namespace Sk8er_Webshop.Data
             var price = (decimal) row["Price"];
             var productType = row["ProductType"].ToString();
 
-            var stock = StockData.GetStockByProductId(ID);
+            //var stock = StockData.GetStockByProductId(ID);
 
             var product = new Product
             {
@@ -50,7 +50,7 @@ namespace Sk8er_Webshop.Data
                 ImgURL = imgURL,
                 Price = price,
                 ProductType = productType,
-                Stock = stock
+                //Stock = stock
             };
 
             return product;

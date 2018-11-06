@@ -7,9 +7,15 @@ using Sk8er_Webshop.Data;
 
 namespace Sk8er_Webshop.Logic
 {
-    public static class BasketLogic
+    public class BasketLogic
     {
-        public static List<BasketItem> JSONToBasketItems(string JSONString)
+        private ProductRepository repository;
+
+        public BasketLogic(ProductRepository repository)
+        {
+            this.repository = repository;
+        }
+        public List<BasketItem> JSONToBasketItems(string JSONString)
         {
             if (JSONString != null)
             {
@@ -24,11 +30,11 @@ namespace Sk8er_Webshop.Logic
             }
         }
 
-        private static void SetProducts(List<BasketItem> items)
+        private void SetProducts(List<BasketItem> items)
         {
             foreach (var item in items)
             {
-                item.Product = ProductData.GetProductById(item.Id);
+                item.Product = repository.GetById(item.Id);
             }
         }
     }

@@ -8,15 +8,11 @@ namespace Sk8er_Webshop.Data
 {
     public class ProductRepository
     {
-        private IProductContext context;
+        private IProductContext<Product> context;
 
-        public ProductRepository(IProductContext context)
+        public ProductRepository(IProductContext<Product> context)
         {
             this.context = context;
-        }
-        public IEnumerable<Product> GetAll()
-        {
-            return context.GetAll();
         }
 
         public IEnumerable<Product> GetAll(int page)

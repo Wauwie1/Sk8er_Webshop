@@ -6,7 +6,7 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-  public  class ProductSQLContext : IProductContext
+  public  class ProductSQLContext : IProductContext<Product>
     {
         public IEnumerable<Product> GetAll()
         {
@@ -68,7 +68,8 @@ namespace Sk8er_Webshop.Data
             var productType = row["ProductType"].ToString();
 
             //todo: Make stock data use repo pattern
-            var stock = StockData.GetStockByProductId(ID);
+            StockRepository repository = new StockRepository(new StockSQLContext());
+            var stock = repository.GetByProductId(ID);
 
             var product = new Product
             {

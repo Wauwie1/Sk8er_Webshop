@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Models;
 
@@ -6,9 +7,15 @@ namespace Sk8er_Webshop.Logic
 {
     public class StockLogic
     {
-        public static List<Stock> GetAllStock()
+        private StockRepository repository;
+
+        public StockLogic(StockRepository repository)
         {
-            return StockData.GetAllStock();
+            this.repository = repository;
+        }
+        public List<Stock> GetAllStock()
+        {
+            return repository.GetAllStock().ToList();
         }
     }
 }
