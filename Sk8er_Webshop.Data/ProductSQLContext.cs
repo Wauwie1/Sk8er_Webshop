@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using Sk8er_Webshop.Models;
 
@@ -15,10 +16,15 @@ namespace Sk8er_Webshop.Data
 
         public Product GetById(int id)
         {
-            var storedProcedure = string.Format("EXEC GetProductById @Id = {0};", id);
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetProductById");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Id", id));
 
-            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+            //Execute stored procedure
+            var dataTable = DatabaseConnector.GetDataTable(command);
 
+            //Create instance and return product
             Product productReturn;
 
             if (dataTable.Rows.Count > 0)
@@ -38,22 +44,34 @@ namespace Sk8er_Webshop.Data
 
         public IEnumerable<Product> GetAll(int page)
         {
-            var storedProcedure = string.Format("EXEC GetAllProductsPage @Page = {0}", page);
-            return GetProductList(storedProcedure);
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetAllProductsPage");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Page", page));
+
+            return GetProductList(command);
         }
 
         public IEnumerable<Product> GetSearchedProducts(string search, int page)
         {
-            var storedProcedure =
-                string.Format("EXEC GetSearchedProductsPage @Search = {0}, @Page = {1}", search, page);
-            return GetProductList(storedProcedure);
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetSearchedProductsPage");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Search", search));
+            command.Parameters.Add(new SqlParameter("@Page", page));
+
+            return GetProductList(command);
         }
 
         public IEnumerable<Product> GetCategoryProducts(string category, int page)
         {
-            var storedProcedure =
-                string.Format("EXEC GetProductsCategory @ProductType = {0}, @Page = {1}", category, page);
-            return GetProductList(storedProcedure);
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetProductsCategory");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@ProductType", category));
+            command.Parameters.Add(new SqlParameter("@Page", page));
+
+            return GetProductList(command);
         }
 
 
@@ -86,7 +104,7 @@ namespace Sk8er_Webshop.Data
             return product;
         }
 
-        private List<Product> GetProductList(string storedProcedure)
+        private List<Product> GetProductList(SqlCommand storedProcedure)
         {
             var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
 

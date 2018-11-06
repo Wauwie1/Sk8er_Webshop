@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
@@ -9,10 +10,11 @@ namespace Sk8er_Webshop.Data
     {
         public IEnumerable<Stock> GetAllStock()
         {
-            var storedProcedure = "EXEC GetAllStock";
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetAllStock");
+            command.CommandType = CommandType.StoredProcedure;
 
-            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
-
+            var dataTable = DatabaseConnector.GetDataTable(command);
             var returnList = new List<Stock>();
 
             foreach (DataRow row in dataTable.Rows)
@@ -26,9 +28,12 @@ namespace Sk8er_Webshop.Data
 
         public Stock GetByProductId(int id)
         {
-            var storedProcedure = string.Format("EXEC GetStockByProductId @Id = {0};", id);
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("GetStockByProductId");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Id", id));
 
-            var dataTable = DatabaseConnector.GetDataTable(storedProcedure);
+            var dataTable = DatabaseConnector.GetDataTable(command);
 
             Stock stockReturn;
 
