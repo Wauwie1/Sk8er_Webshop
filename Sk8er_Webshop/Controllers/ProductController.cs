@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
 using Sk8er_Webshop.ViewModels;
 
@@ -8,7 +7,7 @@ namespace Sk8er_Webshop.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductLogic logic = new ProductLogic(new ProductRepository(new ProductSQLContext()));
+        private readonly ProductLogic logic = new ProductLogic();
         public IActionResult Index()
         {
             return RedirectToAction("All");

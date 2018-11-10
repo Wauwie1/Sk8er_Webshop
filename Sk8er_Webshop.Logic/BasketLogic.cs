@@ -11,9 +11,9 @@ namespace Sk8er_Webshop.Logic
     {
         private ProductRepository repository;
 
-        public BasketLogic(ProductRepository repository)
+        public BasketLogic()
         {
-            this.repository = repository;
+            repository = new ProductRepository(new ProductSQLContext());
         }
         public List<BasketItem> JSONToBasketItems(string JSONString)
         {

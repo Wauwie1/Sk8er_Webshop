@@ -8,10 +8,10 @@ namespace Sk8er_Webshop.Logic
 {
     public  class ProductLogic
     {
-        private ProductRepository repository;
-        public ProductLogic(ProductRepository repository)
+        private readonly ProductRepository repository;
+        public ProductLogic()
         {
-            this.repository = repository;
+            repository = new ProductRepository(new ProductSQLContext());
         }
 
         public List<Product> GetAll(int page)
