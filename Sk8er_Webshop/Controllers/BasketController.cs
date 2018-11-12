@@ -46,5 +46,33 @@ namespace Sk8er_Webshop.Controllers
                 return Content("Order could not be processed");
             }
         }
+
+        public IActionResult Pay(string firstName, string lastName, string userName, string email, string adress, string country, string zipcode)
+        {
+            List<string> customerInformation = new List<string>
+            {
+                firstName, lastName, userName, email, adress, country, zipcode
+            };
+
+            if (!logic.ContainsNull(customerInformation)  && Request.Cookies["BasketCookie"] != null)
+            {
+                //Return payment succesfull
+                return RedirectToAction("PaymentSuccesful");
+            }
+            else
+            {
+                return RedirectToAction("PaymentFailed");
+            }
+        }
+
+        public IActionResult PaymentFailed()
+        {
+            return View();
+        }
+
+        public IActionResult PaymentSuccesful()
+        {
+            return View();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Sk8er_Webshop.Models;
@@ -36,6 +37,22 @@ namespace Sk8er_Webshop.Logic
             {
                 item.Product = repository.GetById(item.Id);
             }
+        }
+
+        public bool ContainsNull(IEnumerable<string> strings)
+        {
+            
+            foreach (var stringItem in strings)
+            {
+                if (stringItem == null)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+
         }
     }
 }
