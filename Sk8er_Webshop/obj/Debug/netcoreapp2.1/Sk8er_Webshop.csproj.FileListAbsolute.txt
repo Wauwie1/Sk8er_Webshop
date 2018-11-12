@@ -38,3 +38,4 @@ C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\ob
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Product\Search.g.cshtml.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Product\Category.g.cshtml.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Basket\Checkout.g.cshtml.cs

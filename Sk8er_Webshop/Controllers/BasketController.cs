@@ -12,6 +12,7 @@ namespace Sk8er_Webshop.Controllers
     public class BasketController : Controller
     {
         private readonly BasketLogic logic = new BasketLogic();
+        private string cookie;
         public IActionResult Index()
         {
             return RedirectToAction("Overview");
@@ -19,13 +20,31 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult Overview()
         {
-            string cookie = Request.Cookies["BasketCookie"];
+             cookie = Request.Cookies["BasketCookie"];
 
             BasketViewModel viewModel = new BasketViewModel()
             {
                 BasketItems = logic.JSONToBasketItems(cookie),
             };
             return View(viewModel);
+        }
+
+        public IActionResult Checkout()
+        {
+            cookie = Request.Cookies["BasketCookie"];
+            BasketViewModel viewModel = new BasketViewModel()
+            {
+                BasketItems = logic.JSONToBasketItems(cookie),
+            };
+
+            if (viewModel.BasketItems.Count > 0)
+            {
+                return View();
+            }
+            else
+            {
+                return Content("Order could not be processed");
+            }
         }
     }
 }
