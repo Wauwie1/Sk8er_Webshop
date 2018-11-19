@@ -41,3 +41,5 @@ C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\ob
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Basket\Checkout.g.cshtml.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Basket\PaymentFailed.g.cshtml.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Basket\PaymentSuccesful.g.cshtml.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Panel\AddNewProduct.g.cshtml.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Panel\NewProductSuccesfull.g.cshtml.cs

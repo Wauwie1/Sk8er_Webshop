@@ -74,6 +74,32 @@ namespace Sk8er_Webshop.Data
             return GetProductList(command);
         }
 
+        public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
+            string ImgUrl)
+        {
+            
+            try
+            {
+                //Create stored procedure command
+                SqlCommand command = new SqlCommand("AddNewProduct");
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Name", name));
+                command.Parameters.Add(new SqlParameter("@Description", description));
+                command.Parameters.Add(new SqlParameter("@Price", price));
+                command.Parameters.Add(new SqlParameter("@Colection", collection));
+                command.Parameters.Add(new SqlParameter("@ProductType", productType));
+                command.Parameters.Add(new SqlParameter("@ImgUrl", ImgUrl));
+                DatabaseConnector.ExecCommand(command);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Adding new product failed. \n" + ex.Message);
+                return false;
+            }
+
+        }
+
 
         private Product CreateProductInstance(DataRow row)
         {
@@ -85,7 +111,7 @@ namespace Sk8er_Webshop.Data
             var price = (decimal)row["Price"];
             var productType = row["ProductType"].ToString();
 
-            //todo: Make stock data use repo pattern
+            
             StockRepository repository = new StockRepository(new StockSQLContext());
             var stock = repository.GetByProductId(ID);
 

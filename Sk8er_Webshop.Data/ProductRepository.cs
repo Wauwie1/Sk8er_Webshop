@@ -34,5 +34,12 @@ namespace Sk8er_Webshop.Data
         {
             return context.GetCategoryProducts(category, page);
         }
+
+        public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
+            string ImgUrl)
+        {
+            return context.AddNewProduct(name, description, price, collection, productType,
+              ImgUrl);
+        }
     }
 }

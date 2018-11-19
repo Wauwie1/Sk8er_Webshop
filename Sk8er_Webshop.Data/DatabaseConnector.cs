@@ -30,5 +30,20 @@ namespace Sk8er_Webshop.Data
 
             return dataTable;
         }
+
+        public static void ExecCommand(SqlCommand storedProcedure)
+        {
+            var con = new SqlConnection(connectionString);
+
+            con.Open();
+
+
+            SqlCommand command = storedProcedure;
+            command.Connection = con;
+
+            command.ExecuteNonQuery();
+
+            con.Close();
+        }
     }
 }
