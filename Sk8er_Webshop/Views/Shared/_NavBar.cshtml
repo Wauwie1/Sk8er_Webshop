@@ -40,8 +40,14 @@
                             </div>
                         </li>
                     </ul>
+                    
+                    <!-- Basket -->
                     <div class="form-inline my-2 my-lg-0">
                         <a asp-controller="Basket" asp-action="Overview"><img src="~/Resources/shopping-basket.png" width="40" height="40" style="margin-right: 15px;" /></a>
+                    </div>
+                    <!-- Login -->
+                    <div class="form-inline my-2 my-lg-0">
+                        <a asp-controller="Login" asp-action="Index"><img src="~/Resources/avatar.svg" width="40" height="40" style="margin-right: 15px;" /></a>
                     </div>
                     <!--Search bar-->
                     <form asp-controller="Product" asp-action="Search" method="get" class="form-inline my-2 my-lg-0">
