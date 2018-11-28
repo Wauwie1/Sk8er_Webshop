@@ -1,4 +1,6 @@
 ﻿@model Sk8er_Webshop.ViewModels.BasketViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
     ViewData["Title"] = "Overview";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,45 +12,55 @@
     <div class="d-flex justify-content-center table table-striped">
         <h2>Je winkelmandje: </h2>
     </div>
-        <div class="d-flex justify-content-center table table-striped">
+    <div class="d-flex justify-content-center table table-striped">
 
-            <table>
-                <thead>
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Product</td>
+                    <td>Amount</td>
+                    <td>Price</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BasketItems)
+                {
                     <tr>
-                        <td></td>
-                        <td>Product</td>
-                        <td>Amount</td>
-                        <td>Price</td>
-                        <td></td>
+                        <td><img width="77" height="102" src=@item.Product.ImgURL /></td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Amount</td>
+                        <td>€@item.Product.Price</td>
+                        <td><img width="20" height="20" src="~/Resources/delete.png" onclick="RemoveItemFromBasket(@item.Id)"></td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.BasketItems)
-                    {
-                        <tr>
-                            <td><img width="77" height="102" src=@item.Product.ImgURL /></td>
-                            <td>@item.Product.Name</td>
-                            <td>@item.Amount</td>
-                            <td>€@item.Product.Price</td>
-                            <td><img width="20" height="20" src="~/Resources/delete.png" onclick="RemoveItemFromBasket(@item.Id)"></td>
-                        </tr>
-                    }
-                    <tr>
-                        <td></td>
-                        <td>Totaal: </td>
-                        <td></td>
-                        <td>€@Model.TotalPrice</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+                }
+                <tr>
+                    <td></td>
+                    <td>Totaal: </td>
+                    <td></td>
+                    <td>€@Model.TotalPrice</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
 
-        </div> }
-        else
-        {
-            <br/>
-            <div class="d-flex justify-content-center">
-                <p> Je hebt nog geen producten in je winkelmandje.</p>
-            </div>
-            <br/>
-        }
+
+    </div>
+    <div class="d-flex justify-content-center">
+        <a asp-controller="Basket" asp-action="Checkout">
+            <div class="btn-dark btn-lg">Afrekenen</div>
+        </a>
+    </div>
+
+    <br />
+    <br />
+}
+else
+{
+    <br />
+    <div class="d-flex justify-content-center">
+        <p> Je hebt nog geen producten in je winkelmandje.</p>
+    </div>
+    <br />
+}

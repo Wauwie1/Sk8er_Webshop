@@ -6,12 +6,13 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Logic
 {
-    public  class ProductLogic
+    public class ProductLogic
     {
         private readonly ProductRepository repository;
         public ProductLogic()
         {
             repository = new ProductRepository(new ProductSQLContext());
+            
         }
 
         public List<Product> GetAll(int page)
@@ -56,31 +57,15 @@ namespace Sk8er_Webshop.Logic
             return products;
         }
 
-
-        //public static List<Product> GetProducts(string search, string category, int page)
-        //{
-        //    if (category != null)
-        //        return GetProductsCategory(category, page);
-        //    return GetAllProducts(page);
-        //}
-
-        //    private static List<Product> GetProductsCategory(string category, int page)
-        //    {
-        //        return ProductData.GetProductsCategory(category, page);
-        //    }
-
-        //    private static List<Product> GetAllProducts(int page)
-        //    {
-        //        return ProductData.GetAllProducts(page);
-        //    }
-
-        //    private static List<Product> GetSearchedProducts(string search, int page)
-        //    {
-        //        return ProductData.GetSearchedProducts(search, page);
-        //    }
         public List<Product> GetCategoryProducts(string category, int page)
         {
             return repository.GetCategoryProducts(category, page).ToList();
+        }
+
+        public bool AddNewProduct(string name, string description, decimal price, string collection, string productType, string ImgUrl)
+        {
+            return repository.AddNewProduct(name, description, price, collection, productType,
+                ImgUrl);
         }
     }
 }

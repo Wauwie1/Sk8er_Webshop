@@ -1,0 +1,72 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Add New Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <br />
+    <div class="d-flex justify-content-center ">
+        <h5>Een nieuw product toevoegen.</h5>
+    </div>
+    <hr />
+    <form asp-controller="Panel" asp-action="AddNewProductToDB">
+
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="productName">Naam: </label>
+                <input type="text" class="form-control" id="productName" name="name" required="">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="description">Omschrijving: </label>
+                <textarea class="form-control" id="description" name="description" rows="3" required=""></textarea>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="price">Prijs: </label>
+                <input class="form-control" type="number" min="0" id="price" name="price" required="" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="collection">Collectie: </label>
+                <select class="form-control" id="collection" name="collection" required="">
+                    <option value="Winter">Winter</option>
+                    <option value="Lente">Lente</option>
+                    <option value="Zomer">Zomer</option>
+                    <option value="Herfst">Herfst</option>
+                    <option value="NewTrends">New Trends</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="type">Type kleding: </label>
+                <select class="form-control" id="type" name="productType" required="">
+                    <option>Shirt</option>
+                    <option>Trui</option>
+                    <option>Jas</option>
+                    <option>Schoenen</option>
+                    <option>Broek</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <label for="imgUrl">Afbeelding URL: </label>
+                <input type="text" class="form-control" id="imgUrl" name="imgUrl" required="">
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mb-2">Toevoegen</button>
+            </div>
+        </div>
+    </form>
+
+</div>
