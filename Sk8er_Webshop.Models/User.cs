@@ -4,6 +4,12 @@
     {
         public int Id { get; set; }
 
+        public int AdressId { get; set; }
         public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public int AuthLevel { get; set; }
+
     }
 }
