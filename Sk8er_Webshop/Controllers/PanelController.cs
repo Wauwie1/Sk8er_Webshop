@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
 using Sk8er_Webshop.ViewModels;
 
@@ -8,7 +9,7 @@ namespace Sk8er_Webshop.Controllers
     public class PanelController : Controller
     {
         private readonly StockLogic stockLogic = new StockLogic();
-        private readonly ProductLogic productLogic = new ProductLogic();
+        private readonly ProductLogic productLogic = new ProductLogic(new ProductSQLContext());
         public IActionResult Index()
         {
             return View();

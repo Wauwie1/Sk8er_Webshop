@@ -9,9 +9,9 @@ namespace Sk8er_Webshop.Logic
     public class ProductLogic
     {
         private readonly ProductRepository repository;
-        public ProductLogic()
+        public ProductLogic(IProductContext<Product> context)
         {
-            repository = new ProductRepository(new ProductSQLContext());
+            repository = new ProductRepository(context);
             
         }
 
