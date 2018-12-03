@@ -9,9 +9,9 @@ namespace Sk8er_Webshop.Logic
     {
         private StockRepository repository;
 
-        public StockLogic()
+        public StockLogic(IStockContext<Stock> context)
         {
-            repository = new StockRepository(new StockSQLContext());
+            repository = new StockRepository(context);
         }
         public List<Stock> GetAllStock()
         {

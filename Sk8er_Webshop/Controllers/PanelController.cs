@@ -8,7 +8,7 @@ namespace Sk8er_Webshop.Controllers
 {
     public class PanelController : Controller
     {
-        private readonly StockLogic stockLogic = new StockLogic();
+        private readonly StockLogic stockLogic = new StockLogic(new StockSQLContext());
         private readonly ProductLogic productLogic = new ProductLogic(new ProductSQLContext());
         public IActionResult Index()
         {
