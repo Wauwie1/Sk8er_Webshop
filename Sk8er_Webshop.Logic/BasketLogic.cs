@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Sk8er_Webshop.Models;
 using Newtonsoft.Json;
@@ -12,18 +13,26 @@ namespace Sk8er_Webshop.Logic
     {
         private ProductRepository repository;
 
-        public BasketLogic()
+        public BasketLogic(IProductContext<Product> context)
         {
-            repository = new ProductRepository(new ProductSQLContext());
+            repository = new ProductRepository(context);
         }
         public List<BasketItem> JSONToBasketItems(string JSONString)
         {
             if (JSONString != null)
             {
-                List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(JSONString);
+                try
+                {
+                    List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(JSONString);
 
-                SetProducts(items);
-                return items;
+                    SetProducts(items);
+                    return items;
+                }
+                catch (JsonReaderException ex)
+                {
+                    Console.WriteLine("Invalid JSONString", ex.Message);
+                    return null;
+                }
             }
             else
             {
@@ -41,16 +50,22 @@ namespace Sk8er_Webshop.Logic
 
         public bool ContainsNull(IEnumerable<string> strings)
         {
-            
-            foreach (var stringItem in strings)
+            if (strings.Count() > 0)
             {
-                if (stringItem == null)
+                foreach (var stringItem in strings)
                 {
-                    return true;
+                    if (string.IsNullOrWhiteSpace(stringItem))
+                    {
+                        return true;
+                    }
                 }
-            }
 
-            return false;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
 
 
         }
