@@ -1,18 +1,20 @@
-﻿@{
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
     ViewData["Title"] = "Panel Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="row">
-        <br/>
+        <br />
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <h5 class="text-center">Welcome to the admin panel.</h5>
         </div>
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
-        <br/>
+        <br />
     </div>
     <div class="row">
         <div class="col-md-3"></div>
@@ -20,8 +22,8 @@
             <ul class="list-group">
                 <li class="list-group-item active">Producten</li>
                 <li class="list-group-item">Alle producten</li>
-                <li class="list-group-item">Nieuw product toevoegen</li>
-                <li class="list-group-item">Voorraad</li>
+                <a asp-controller="Panel" asp-action="AddNewProduct"><li class="list-group-item">Nieuw product toevoegen</li></a>
+                <a asp-controller="Panel" asp-action="Stock"><li class="list-group-item">Voorraad</li></a>
             </ul>
         </div>
         <div class="col-md-3">
@@ -32,5 +34,5 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-    <br/>
+    <br />
 </div>
