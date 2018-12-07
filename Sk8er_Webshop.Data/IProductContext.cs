@@ -11,6 +11,8 @@ namespace Sk8er_Webshop.Data
         IEnumerable<T> GetCategoryProducts(string category, int page);
         bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
             string ImgUrl);
+
+        void PlaceOrder(Order order);
     }
 
 }

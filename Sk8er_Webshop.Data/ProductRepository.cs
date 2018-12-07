@@ -41,5 +41,10 @@ namespace Sk8er_Webshop.Data
             return context.AddNewProduct(name, description, price, collection, productType,
               ImgUrl);
         }
+
+        public void PlaceOrder(Order order)
+        {
+            context.PlaceOrder(order);
+        }
     }
 }

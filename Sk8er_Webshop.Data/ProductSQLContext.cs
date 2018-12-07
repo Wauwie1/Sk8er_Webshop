@@ -100,6 +100,18 @@ namespace Sk8er_Webshop.Data
 
         }
 
+        public void PlaceOrder(Order order)
+        {
+            //Create stored procedure command
+            SqlCommand command = new SqlCommand("AddOrder");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@ProductJSON", order.ProductsJSON));
+            command.Parameters.Add(new SqlParameter("@UserKey", order.UserKey));
+            command.Parameters.Add(new SqlParameter("@Status", order.Status));
+            command.Parameters.Add(new SqlParameter("@TotalPrice", order.TotalPrice));
+            DatabaseConnector.ExecCommand(command);
+        }
+
 
         private Product CreateProductInstance(DataRow row)
         {

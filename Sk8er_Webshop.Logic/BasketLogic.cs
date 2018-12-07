@@ -69,5 +69,23 @@ namespace Sk8er_Webshop.Logic
 
 
         }
+
+        public void PlaceOrder(Order order)
+        {
+            order.TotalPrice = calculateTotalPrice(order);
+            repository.PlaceOrder(order);
+        }
+
+        private decimal calculateTotalPrice(Order order)
+        {
+            decimal totalPrice = 0.0m;
+            List<BasketItem> basketItems = JSONToBasketItems(order.ProductsJSON);
+            foreach (var basketItem in basketItems)
+            {
+                totalPrice += basketItem.Product.Price * basketItem.Amount;
+            }
+
+            return totalPrice;
+        }
     }
 }

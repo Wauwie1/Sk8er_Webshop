@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
+using Sk8er_Webshop.Models;
 using Sk8er_Webshop.ViewModels;
 
 namespace Sk8er_Webshop.Controllers
@@ -13,6 +14,7 @@ namespace Sk8er_Webshop.Controllers
     public class BasketController : Controller
     {
         private readonly BasketLogic logic = new BasketLogic(new ProductSQLContext());
+        private readonly LoginLogic loginLogic = new LoginLogic();
         private string cookie;
         public IActionResult Index()
         {
@@ -50,14 +52,21 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult Pay(string firstName, string lastName, string userName, string email, string adress, string country, string zipcode)
         {
-            List<string> customerInformation = new List<string>
+            if (Request.Cookies["BasketCookie"] != null)
             {
-                firstName, lastName, userName, email, adress, country, zipcode
-            };
+                string userString = HttpContext.Session.GetString("User");
+                User user = loginLogic.GetUser(userString);
 
-            if (!logic.ContainsNull(customerInformation)  && Request.Cookies["BasketCookie"] != null)
-            {
-                //Return payment succesfull
+                Order order = new Order()
+                {
+                    
+                    ProductsJSON = Request.Cookies["BasketCookie"],
+                    UserKey = user.Id,
+                    Status = 0
+
+                };
+                logic.PlaceOrder(order);
+                //Return payment succesfulL
                 return RedirectToAction("PaymentSuccesful");
             }
             else
