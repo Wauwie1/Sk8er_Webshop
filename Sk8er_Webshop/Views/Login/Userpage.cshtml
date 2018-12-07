@@ -1,0 +1,27 @@
+﻿@model Sk8er_Webshop.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<br/>
+<br/>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h5>Welcome back @Model.CurrentUser.Username</h5>
+    </div>
+    <br/>
+    <div class="d-flex justify-content-between">
+
+        <ul class="list-group">
+            <li class="list-group-item active">Menu</li>
+            <li class="list-group-item">My Orders</li>
+            <a><li class="list-group-item">My Settings</li></a>
+            <a><li class="list-group-item">My Shipping Adress</li></a>
+        </ul>
+
+    </div>
+</div>
+<br/>
+<br/>

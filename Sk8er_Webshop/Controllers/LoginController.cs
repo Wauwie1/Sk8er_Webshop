@@ -34,13 +34,30 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult Userpage()
         {
-            string test = HttpContext.Session.GetString("User");
-            return Content(test);
+            string userString = HttpContext.Session.GetString("User");
+            UserViewModel viewModel = new UserViewModel()
+            {
+                CurrentUser = logic.GetUser(userString)
+            };
+            return View(viewModel);
         }
 
         public IActionResult LoginFailed()
         {
             throw new NotImplementedException();
+        }
+
+        public IActionResult Adress()
+        {
+            string userString = HttpContext.Session.GetString("User");
+            User user = logic.GetUser(userString);
+
+            UserViewModel viewModel = new UserViewModel()
+            {
+                CurrentUser = user,
+                UserAdress = logic.GetAdress(user.AdressId)
+            };
+            return View(viewModel);
         }
     }
 }

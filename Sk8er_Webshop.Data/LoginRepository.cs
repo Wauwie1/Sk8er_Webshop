@@ -15,5 +15,10 @@ namespace Sk8er_Webshop.Data
         {
            return _context.Login(username, password);
         }
+
+        public Adress GetAdress(int id)
+        {
+            return _context.GetAdress(id);
+        }
     }
 }

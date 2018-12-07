@@ -27,11 +27,46 @@ namespace Sk8er_Webshop.Data
            
         }
 
+        public Adress GetAdress(int id)
+        {
+            SqlCommand command = new SqlCommand("GetAdress");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@AdressKey", id));
 
+            var dataTable = DatabaseConnector.GetDataTable(command);
 
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                return CreateAdressInstance(row);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        private Adress CreateAdressInstance(DataRow row)
+        {
+            int id = (int)row["AdressKey"];
+            string streetName = row["StreetName"].ToString();
+            int houseNumber = (int) row["HouseNumber"];
+            string houseAddition = row["HouseAddition"].ToString();
+            string zipcode = row["Zipcode"].ToString();
+            string country = row["Country"].ToString();
 
+            Adress adress = new Adress()
+            {
+                Id = id,
+                StreetName = streetName,
+                HouseNumber = houseNumber,
+                HouseAddition = houseAddition,
+                Zipcode = zipcode,
+                Country = country
+            };
 
+            return adress;
+        }
 
 
         public User CreateUserInstance(DataRow row)
