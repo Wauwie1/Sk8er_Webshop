@@ -42,6 +42,11 @@ namespace Sk8er_Webshop
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
         }
     }

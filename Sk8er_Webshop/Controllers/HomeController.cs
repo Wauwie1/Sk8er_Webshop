@@ -8,5 +8,10 @@ namespace Sk8er_Webshop.Controllers
         {
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
