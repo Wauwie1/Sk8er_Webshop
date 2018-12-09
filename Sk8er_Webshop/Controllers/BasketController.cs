@@ -14,7 +14,7 @@ namespace Sk8er_Webshop.Controllers
     public class BasketController : Controller
     {
         private readonly BasketLogic logic = new BasketLogic(new ProductSQLContext());
-        private readonly LoginLogic loginLogic = new LoginLogic();
+        private readonly LoginLogic loginLogic = new LoginLogic(new LoginSQLContext());
         private string cookie;
         public IActionResult Index()
         {

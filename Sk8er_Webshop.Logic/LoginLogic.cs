@@ -10,9 +10,9 @@ namespace Sk8er_Webshop.Logic
     {
         private readonly LoginRepository repository;
 
-        public LoginLogic()
+        public LoginLogic(ILoginContext context)
         {
-            repository = new LoginRepository(new LoginSQLContext());
+            repository = new LoginRepository(context);
         }
         public User Login(string username, string password)
         {
