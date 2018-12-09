@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
@@ -13,7 +14,12 @@ namespace Sk8er_Webshop.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly LoginLogic logic = new LoginLogic(new LoginSQLContext());
+        private readonly LoginLogic logic;
+
+        public LoginController(IConfiguration configuration)
+        {
+            logic = new LoginLogic(new LoginSQLContext(configuration));
+        }
         public IActionResult Index()
         {
             return View();

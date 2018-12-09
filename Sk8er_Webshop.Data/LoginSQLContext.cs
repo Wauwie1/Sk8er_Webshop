@@ -1,11 +1,15 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-    public class LoginSQLContext : ILoginContext
+    public class LoginSQLContext : InitDBConnector, ILoginContext
     {
+        public LoginSQLContext(IConfiguration configuration) : base(configuration)
+        {
+        }
         public User Login(string username, string password)
         {
             SqlCommand command = new SqlCommand("GetUser");
@@ -88,5 +92,7 @@ namespace Sk8er_Webshop.Data
 
             return user;
         }
+
+
     }
 }

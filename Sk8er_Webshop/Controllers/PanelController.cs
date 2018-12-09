@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
@@ -11,9 +12,15 @@ namespace Sk8er_Webshop.Controllers
 {
     public class PanelController : Controller
     {
-        private readonly StockLogic stockLogic = new StockLogic(new StockSQLContext());
-        private readonly ProductLogic productLogic = new ProductLogic(new ProductSQLContext());
+        private readonly StockLogic stockLogic;
+        private readonly ProductLogic productLogic;
         private User user;
+
+        public PanelController(IConfiguration configuration)
+        {
+            stockLogic = new StockLogic(new StockSQLContext(configuration));
+            productLogic = new ProductLogic(new ProductSQLContext(configuration));
+        }
         public IActionResult Index()
         {
 

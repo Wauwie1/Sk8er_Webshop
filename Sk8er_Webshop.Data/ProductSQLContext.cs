@@ -4,11 +4,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using Sk8er_Webshop.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Sk8er_Webshop.Data
 {
-  public  class ProductSQLContext : IProductContext<Product>
-    {
+  public  class ProductSQLContext : InitDBConnector, IProductContext<Product>
+  {
+      public ProductSQLContext(IConfiguration configuration) : base(configuration)
+      {
+      }
         public IEnumerable<Product> GetAll()
         {
             throw new NotImplementedException();
@@ -124,7 +128,8 @@ namespace Sk8er_Webshop.Data
             var productType = row["ProductType"].ToString();
 
             
-            StockRepository repository = new StockRepository(new StockSQLContext());
+            StockRepository repository = new StockRepository(
+                                            new StockSQLContext(DatabaseConnector._configuration));
             var stock = repository.GetByProductId(ID);
 
             var product = new Product
@@ -156,5 +161,6 @@ namespace Sk8er_Webshop.Data
 
             return productList;
         }
-    }
+
+  }
 }

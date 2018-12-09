@@ -1,4 +1,5 @@
-﻿using Sk8er_Webshop.Models;
+﻿using Microsoft.Extensions.Configuration;
+using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {

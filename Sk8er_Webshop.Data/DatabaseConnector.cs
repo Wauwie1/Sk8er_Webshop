@@ -1,13 +1,21 @@
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace Sk8er_Webshop.Data
 {
-    public static class DatabaseConnector
+    public   class DatabaseConnector
     {
-        private static readonly string connectionString =
-            @"Server=tcp:sk8erwebshopdbserver.database.windows.net,1433;Initial Catalog=Sk8erWebshop_database;Persist Security Info=False;User ID=TheAnswer42;Password=XTqwj]Q^`""NPh6*~s4t#PRE@t'7w~jy[.9#S>XrsP[*+JT,F(e3>&uP?syDBxE/*e]WE'^c&TDPwW^r2J""H<?tzQV6v`'2h]CK%b?(44C4aX8&`+Yx?QCA5XGpRX:{t;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-        public static DataTable GetDataTable(SqlCommand storedProcedure)
+
+        private string connectionString { get; set; }
+        public IConfiguration _configuration { get; private set; }
+
+        public   DatabaseConnector(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = configuration.GetConnectionString("Sk8erDB");
+        }
+        public   DataTable GetDataTable(SqlCommand storedProcedure)
         {
             var dataTable = new DataTable();
             var con = new SqlConnection(connectionString);
@@ -30,7 +38,7 @@ namespace Sk8er_Webshop.Data
             return dataTable;
         }
 
-        public static void ExecCommand(SqlCommand storedProcedure)
+        public   void ExecCommand(SqlCommand storedProcedure)
         {
             var con = new SqlConnection(connectionString);
 

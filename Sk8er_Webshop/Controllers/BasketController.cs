@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Sk8er_Webshop.Data;
 using Sk8er_Webshop.Logic;
 using Sk8er_Webshop.Models;
@@ -13,9 +14,15 @@ namespace Sk8er_Webshop.Controllers
 {
     public class BasketController : Controller
     {
-        private readonly BasketLogic logic = new BasketLogic(new ProductSQLContext());
-        private readonly LoginLogic loginLogic = new LoginLogic(new LoginSQLContext());
+        private readonly BasketLogic logic;
+        private readonly LoginLogic loginLogic;
         private string cookie;
+
+        public BasketController(IConfiguration configuration)
+        {
+            logic = new BasketLogic(new ProductSQLContext(configuration));
+            loginLogic = new LoginLogic(new LoginSQLContext(configuration));
+        }
         public IActionResult Index()
         {
             return RedirectToAction("Overview");

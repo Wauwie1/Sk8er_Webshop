@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-    public class StockSQLContext : IStockContext<Stock>
+    public class StockSQLContext : InitDBConnector, IStockContext<Stock>
     {
+        public StockSQLContext(IConfiguration configuration) : base(configuration)
+        {
+        }
         public IEnumerable<Stock> GetAllStock()
         {
             //Create stored procedure command
@@ -93,5 +97,7 @@ namespace Sk8er_Webshop.Data
 
             return stock;
         }
+
+
     }
 }
