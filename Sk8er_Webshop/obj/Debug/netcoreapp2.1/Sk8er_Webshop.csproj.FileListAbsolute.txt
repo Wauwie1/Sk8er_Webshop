@@ -48,3 +48,4 @@ C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\ob
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Login\Userpage.g.cshtml.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Login\Adress.g.cshtml.cs
 C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Home\Error.g.cshtml.cs
+C:\Users\Paul_Laptop\Documents\Fontys\S2\S2 Repos\Sk8er_Webshop\Sk8er_Webshop\obj\Debug\netcoreapp2.1\Razor\Views\Panel\AllOrders.g.cshtml.cs

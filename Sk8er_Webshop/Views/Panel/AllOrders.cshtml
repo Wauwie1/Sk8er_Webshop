@@ -1,0 +1,30 @@
+﻿@model Sk8er_Webshop.ViewModels.AllOrdersViewModel
+
+@{
+    ViewBag.Title = "All orders by user";
+    Layout = "_Layout";
+}
+
+<br/>
+<br/>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>OrderId</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var row in Model.Orders)
+            {
+                <tr>
+                    <td>@row.Username</td>
+                    <td>@row.OrderId</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

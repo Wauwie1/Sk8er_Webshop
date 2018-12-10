@@ -14,12 +14,14 @@ namespace Sk8er_Webshop.Controllers
     {
         private readonly StockLogic stockLogic;
         private readonly ProductLogic productLogic;
+        private readonly PanelLogic logic;
         private User user;
 
         public PanelController(IConfiguration configuration)
         {
             stockLogic = new StockLogic(new StockSQLContext(configuration));
             productLogic = new ProductLogic(new ProductSQLContext(configuration));
+            logic = new PanelLogic(new PanelSQLContext(configuration));
         }
         public IActionResult Index()
         {
@@ -114,6 +116,15 @@ namespace Sk8er_Webshop.Controllers
         public IActionResult NewProductFailed()
         {
             return View();
+        }
+
+        public IActionResult AllOrders()
+        {
+            AllOrdersViewModel viewModel = new AllOrdersViewModel()
+            {
+                Orders = logic.GetAllOrders()
+            };
+            return View(viewModel);
         }
     }
 }
