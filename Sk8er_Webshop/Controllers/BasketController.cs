@@ -73,7 +73,11 @@ namespace Sk8er_Webshop.Controllers
 
                 };
                 logic.PlaceOrder(order);
-                //Return payment succesfulL
+
+                // Empties basket
+                HttpContext.Response.Cookies.Delete("BasketCookie");
+
+                // Return payment succesfull
                 return RedirectToAction("PaymentSuccesful");
             }
             else
