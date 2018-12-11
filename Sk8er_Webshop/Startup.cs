@@ -19,7 +19,7 @@ namespace Sk8er_Webshop
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(5);
+                options.IdleTimeout = TimeSpan.FromMinutes(3);
                 options.Cookie.HttpOnly = true;
             });
             services.AddMvc();

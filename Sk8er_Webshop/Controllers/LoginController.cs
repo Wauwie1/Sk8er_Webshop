@@ -22,11 +22,20 @@ namespace Sk8er_Webshop.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            if (String.IsNullOrEmpty(HttpContext.Session.GetString("User")))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Userpage");
+            }
+
         }
 
         public IActionResult Login(string username, string password)
         {
+
             User user = logic.Login(username, password);
             if (user != null)
             {
