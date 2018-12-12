@@ -75,3 +75,33 @@ function RemoveItemFromBasket(id) {
     //Reload page
     location.reload();
 }
+
+function passValidation() {
+    let pass = document.querySelector("#inputPassword").value;
+    let passConfirm = document.querySelector("#inputPasswordConfirm").value;
+
+    let length = false;
+    let match = false;
+
+    if (pass.length < 8) {
+        $("#shortText").fadeIn(500);
+    } else {
+        $("#shortText").fadeOut(500)
+        length = true;
+    }
+
+    if (pass != passConfirm) {
+        $("#matchText").fadeIn(500);
+    } else {
+        $("#matchText").fadeOut(500);
+        match = true;
+    }
+
+    if (match && length) {
+        console.log("Match");
+        document.getElementById("registerButton").disabled = false;
+    } else {
+        document.getElementById("registerButton").disabled = true;
+    }
+}
+    

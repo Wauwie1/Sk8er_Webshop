@@ -48,6 +48,11 @@ namespace Sk8er_Webshop.Controllers
             }
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public IActionResult Userpage()
         {
             string userString = HttpContext.Session.GetString("User");

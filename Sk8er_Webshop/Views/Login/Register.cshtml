@@ -1,0 +1,89 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "_Layout";
+}
+
+<br />
+<br />
+
+<div class="container">
+    <form asp-controller="Login">
+        <br />
+        <h4>Gebruikersgegevens (verplicht):</h4>
+        <hr />
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputUsername">Gebruikersnaam: </label>
+                <input type="text" class="form-control" id="inputUsername" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail">Email: </label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword">Wachtwoord: </label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" onChange="passValidation()" required>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputPasswordConfirm">Bevestig wachtwoord: </label>
+                <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password"  onChange="passValidation()" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <h6 style="display: none" id="shortText">Wachtwoord te kort</h6>
+        </div>
+        <div class="form-row">
+            <h6 style="display: none" id="matchText">Wachtwoorden komen niet overeen</h6>
+        </div>
+        <br />
+        <h4>Factuuradress (niet verplicht):</h4>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="firstName">Voornaam: </label>
+                <input type="text" class="form-control" name="firstName" placeholder="" value="" required="">
+            </div>
+            <div class="col-md-6">
+                <label for="lastName">Achternaam: </label>
+                <input type="text" class="form-control" name="lastName" placeholder="" value="" required="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="inputStreet">Straat: </label>
+                <input type="text" class="form-control" id="inputStreet" placeholder="Kerkstraat">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputStreetNumber">Huisnummer: </label>
+                <input type="text" class="form-control" id="inputStreetNumber" placeholder="1234">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Stad: </label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="country">Land: </label>
+                <select class="custom-select d-block w-100" name="country" required="">
+                    <option value="">Kies...</option>
+                    <option value="NL">Nederland</option>
+                    <option value="BE">België</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Postcode: </label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-primary btn-lg" disabled="" id="registerButton">Registreer</button>
+    </form>
+</div>
+<br /><br />
