@@ -34,5 +34,10 @@ namespace Sk8er_Webshop.Logic
             var list = repository.GetUserOrdersAmount();
             return list;
         }
+
+        public int GetTotalOrders()
+        {
+            return repository.GetTotalOrders();
+        }
     }
 }

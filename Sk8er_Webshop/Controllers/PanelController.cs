@@ -131,7 +131,8 @@ namespace Sk8er_Webshop.Controllers
         {
             var viewModel = new OrdersAmountViewModel()
             {
-                UserOrdersAmount = logic.GetUserOrdersAmount()
+                UserOrdersAmount = logic.GetUserOrdersAmount(),
+                TotalOrders = logic.GetTotalOrders()
             };
             return View(viewModel);
         }

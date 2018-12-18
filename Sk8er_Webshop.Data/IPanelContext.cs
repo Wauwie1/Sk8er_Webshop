@@ -7,5 +7,6 @@ namespace Sk8er_Webshop.Data
     {
         List<UserOrder> GetAllOrders();
         List<UserOrdersAmount> GetUserOrdersAmount();
+        int GetTotalOrders();
     }
 }

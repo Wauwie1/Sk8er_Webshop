@@ -8,11 +8,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Sk8er_Webshop.Data
 {
-  public  class ProductSQLContext : InitDBConnector, IProductContext<Product>
-  {
-      public ProductSQLContext(IConfiguration configuration) : base(configuration)
-      {
-      }
+    public class ProductSQLContext : InitDBConnector, IProductContext<Product>
+    {
+        public ProductSQLContext(IConfiguration configuration) : base(configuration)
+        {
+        }
 
         public Product GetById(int id)
         {
@@ -77,7 +77,7 @@ namespace Sk8er_Webshop.Data
         public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
             string ImgUrl)
         {
-            
+
             try
             {
                 //Create stored procedure command
@@ -123,7 +123,7 @@ namespace Sk8er_Webshop.Data
             var price = (decimal)row["Price"];
             var productType = row["ProductType"].ToString();
 
-            
+
             StockRepository repository = new StockRepository(
                                             new StockSQLContext(DatabaseConnector._configuration));
             var stock = repository.GetByProductId(ID);
@@ -158,5 +158,5 @@ namespace Sk8er_Webshop.Data
             return productList;
         }
 
-  }
+    }
 }

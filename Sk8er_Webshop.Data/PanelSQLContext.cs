@@ -51,5 +51,15 @@ namespace Sk8er_Webshop.Data
             }
             return list;
         }
+
+        public int GetTotalOrders()
+        {
+            SqlCommand command = new SqlCommand("TotalOrdersAmount");
+            command.CommandType = CommandType.StoredProcedure;
+            var dataTable = DatabaseConnector.GetDataTable(command);
+            var row = dataTable.Rows[0];
+
+            return (int)row["Total"];
+        }
     }
 }
