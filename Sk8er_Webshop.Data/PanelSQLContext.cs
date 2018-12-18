@@ -32,5 +32,24 @@ namespace Sk8er_Webshop.Data
 
             return list;
         }
+
+        public List<UserOrdersAmount> GetUserOrdersAmount()
+        {
+            List<UserOrdersAmount> list = new List<UserOrdersAmount>();
+            SqlCommand command = new SqlCommand("GetOrdersAmountUser");
+            command.CommandType = CommandType.StoredProcedure;
+            var dataTable = DatabaseConnector.GetDataTable(command);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var userOrder = new UserOrdersAmount()
+                {
+                  Name = row["Username"].ToString(),
+                  Amount = (int)row["Amount"]
+                };
+
+                list.Add(userOrder);
+            }
+            return list;
+        }
     }
 }

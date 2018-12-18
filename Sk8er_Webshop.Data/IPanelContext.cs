@@ -6,5 +6,6 @@ namespace Sk8er_Webshop.Data
     public interface IPanelContext
     {
         List<UserOrder> GetAllOrders();
+        List<UserOrdersAmount> GetUserOrdersAmount();
     }
 }

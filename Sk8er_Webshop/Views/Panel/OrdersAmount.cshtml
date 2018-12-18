@@ -1,0 +1,31 @@
+﻿@model Sk8er_Webshop.ViewModels.OrdersAmountViewModel
+
+@{
+    ViewBag.Title = "Amount of orders per user";
+    Layout = "_Layout";
+}
+
+
+<br />
+<br />
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Amount of orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.UserOrdersAmount)
+                {
+                    <tr>
+                        <td>@row.Name</td>
+                        <td>@row.Amount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

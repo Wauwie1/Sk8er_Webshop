@@ -16,5 +16,10 @@ namespace Sk8er_Webshop.Data
         {
             return _context.GetAllOrders();
         }
+
+        public List<UserOrdersAmount> GetUserOrdersAmount()
+        {
+            return _context.GetUserOrdersAmount();
+        }
     }
 }

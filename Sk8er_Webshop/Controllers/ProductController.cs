@@ -30,12 +30,12 @@ namespace Sk8er_Webshop.Controllers
 
             return View(viewModel);
         }
-
+        // todo: vervang catch
         public IActionResult Details(int id)
         {
             try
             {
-                var product = logic.GetById((id));
+                var product = logic.GetById(id);
                 return View(product);
             }
             catch (NullReferenceException ex)

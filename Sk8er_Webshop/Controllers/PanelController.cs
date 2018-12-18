@@ -126,5 +126,14 @@ namespace Sk8er_Webshop.Controllers
             };
             return View(viewModel);
         }
+
+        public IActionResult OrdersAmount()
+        {
+            var viewModel = new OrdersAmountViewModel()
+            {
+                UserOrdersAmount = logic.GetUserOrdersAmount()
+            };
+            return View(viewModel);
+        }
     }
 }

@@ -13,10 +13,6 @@ namespace Sk8er_Webshop.Data
       public ProductSQLContext(IConfiguration configuration) : base(configuration)
       {
       }
-        public IEnumerable<Product> GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
         public Product GetById(int id)
         {
