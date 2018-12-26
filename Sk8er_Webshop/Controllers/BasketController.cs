@@ -34,7 +34,7 @@ namespace Sk8er_Webshop.Controllers
 
             BasketViewModel viewModel = new BasketViewModel()
             {
-                BasketItems = logic.JSONToBasketItems(cookie),
+                BasketItems = logic.JSONTOBasketItems(cookie),
             };
             return View(viewModel);
         }
@@ -44,7 +44,7 @@ namespace Sk8er_Webshop.Controllers
             cookie = Request.Cookies["BasketCookie"];
             BasketViewModel viewModel = new BasketViewModel()
             {
-                BasketItems = logic.JSONToBasketItems(cookie),
+                BasketItems = logic.JSONTOBasketItems(cookie),
             };
 
             if (viewModel.BasketItems.Count > 0)

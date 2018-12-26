@@ -73,7 +73,7 @@ namespace Sk8er_Webshop.Data
         }
 
 
-        public User CreateUserInstance(DataRow row)
+        private User CreateUserInstance(DataRow row)
         {
             int id = (int)row["UserKey"];
             int adressId = (int)row["AdressKey"];

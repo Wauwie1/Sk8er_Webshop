@@ -17,7 +17,7 @@ namespace Sk8er_Webshop.Logic
         {
             repository = new ProductRepository(context);
         }
-        public List<BasketItem> JSONToBasketItems(string JSONString)
+        public List<BasketItem> JSONTOBasketItems(string JSONString)
         {
             if (JSONString != null)
             {
@@ -48,27 +48,7 @@ namespace Sk8er_Webshop.Logic
             }
         }
 
-        public bool ContainsNull(IEnumerable<string> strings)
-        {
-            if (strings.Count() > 0)
-            {
-                foreach (var stringItem in strings)
-                {
-                    if (string.IsNullOrWhiteSpace(stringItem))
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
-
-        }
+       
 
         public void PlaceOrder(Order order)
         {
@@ -79,7 +59,7 @@ namespace Sk8er_Webshop.Logic
         private decimal calculateTotalPrice(Order order)
         {
             decimal totalPrice = 0.0m;
-            List<BasketItem> basketItems = JSONToBasketItems(order.ProductsJSON);
+            List<BasketItem> basketItems = JSONTOBasketItems(order.ProductsJSON);
             foreach (var basketItem in basketItems)
             {
                 totalPrice += basketItem.Product.Price * basketItem.Amount;

@@ -15,13 +15,13 @@ namespace Sk8er_WebshopTest
         [TestMethod]
         public void JSONToBasketItems1()
         {
-            List<BasketItem> items = logic.JSONToBasketItems(null);
+            List<BasketItem> items = logic.JSONTOBasketItems(null);
             Assert.IsTrue(items.Count == 0);
         }
         [TestMethod]
         public void JSONToBasketItems2()
         {
-            List<BasketItem> items = logic.JSONToBasketItems("InvalidString");
+            List<BasketItem> items = logic.JSONTOBasketItems("InvalidString");
             Assert.IsNull(items);
         }
         [TestMethod]
@@ -29,49 +29,10 @@ namespace Sk8er_WebshopTest
         {
             //Correct string
             string JSON = "[{\"Id\":3,\"Amount\":1,\"Size\":\"S\"}]";
-            List<BasketItem> items = logic.JSONToBasketItems(JSON);
+            List<BasketItem> items = logic.JSONTOBasketItems(JSON);
             Assert.IsTrue(items.Count > 0);
         }
 
-        [TestMethod]
-        public void ContainsNull1()
-        {
-            List<string> strings = new List<string>();
-            
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("");
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("string");
-
-            bool containsNull = logic.ContainsNull(strings);
-            Assert.IsTrue(containsNull);
-        }
-        [TestMethod]
-        public void ContainsNull2()
-        {
-            List<string> strings = new List<string>();
-
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("string");
-            strings.Add("string");
-
-            bool containsNull = logic.ContainsNull(strings);
-            Assert.IsFalse(containsNull);
-        }
-
-        [TestMethod]
-        public void ContainsNull3()
-        {
-            List<string> strings = new List<string>();
-
-
-            bool containsNull = logic.ContainsNull(strings);
-            Assert.IsTrue(containsNull);
-        }
+       
     }
 }
