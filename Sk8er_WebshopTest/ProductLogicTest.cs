@@ -90,5 +90,13 @@ namespace Sk8er_WebshopTest
 
             Assert.IsTrue(succesful);
         }
+
+        [TestMethod]
+        public void ProductStockTest()
+        {
+            Product product = new Product();
+            product = logic.GetById(1);
+            Assert.IsNotNull(product.Stock); 
+        }
     }
 }

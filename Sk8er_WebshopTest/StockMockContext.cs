@@ -28,7 +28,7 @@ namespace Sk8er_WebshopTest
         }
         public Stock GetByProductId(int id)
         {
-            throw new System.NotImplementedException();
+            return stocks.Find(s => s.Id == id);
         }
 
         public IEnumerable<Stock> GetAllStock()

@@ -40,6 +40,11 @@ namespace Sk8er_WebshopTest
             return products.Find(p => p.Id == id);
         }
 
+        public void PlaceOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Product> GetAll(int page)
         {
             List<Product> returnList = new List<Product>();
@@ -94,6 +99,9 @@ namespace Sk8er_WebshopTest
         public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
             string ImgUrl)
         {
+            // For integration test
+            StockMockContext stockContext = new StockMockContext();
+
             try
             {
                 products.Add(new Product()
@@ -103,7 +111,9 @@ namespace Sk8er_WebshopTest
                     Price = price,
                     Collection = collection,
                     ProductType = productType,
-                    ImgURL = ImgUrl
+                    ImgURL = ImgUrl,
+                    Stock = stockContext.GetByProductId(new Random().Next(0, 101))
+
                 });
                 return true;
             }
