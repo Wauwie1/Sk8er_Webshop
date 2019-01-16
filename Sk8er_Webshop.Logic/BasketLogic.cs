@@ -11,7 +11,7 @@ namespace Sk8er_Webshop.Logic
 {
     public class BasketLogic
     {
-        private ProductRepository _repository;
+        private readonly ProductRepository _repository;
 
         public BasketLogic(IProductContext<Product> context)
         {

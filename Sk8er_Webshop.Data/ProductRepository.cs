@@ -8,7 +8,7 @@ namespace Sk8er_Webshop.Data
 {
     public class ProductRepository
     {
-        private IProductContext<Product> _context;
+        private readonly IProductContext<Product> _context;
 
         public ProductRepository(IProductContext<Product> context)
         {

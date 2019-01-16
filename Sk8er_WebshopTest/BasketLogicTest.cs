@@ -10,7 +10,7 @@ namespace Sk8er_WebshopTest
     [TestClass]
     public class BasketLogicTest
     {
-        BasketLogic _logic = new BasketLogic(new ProductMockContext());
+        readonly BasketLogic _logic = new BasketLogic(new ProductMockContext());
 
         [TestMethod]
         public void JsonToBasketItems1()

@@ -8,7 +8,7 @@ namespace Sk8er_WebshopTest
     [TestClass]
     public class StockLogicTest
     {
-        private StockLogic _logic = new StockLogic(new StockMockContext());
+        private readonly StockLogic _logic = new StockLogic(new StockMockContext());
         [TestMethod]
         public void GetAllStock1()
         {

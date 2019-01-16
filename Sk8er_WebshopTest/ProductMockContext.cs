@@ -9,7 +9,7 @@ namespace Sk8er_WebshopTest
 {
     public class ProductMockContext : IProductContext<Product>
     {
-        private List<Product> _products;
+        private readonly List<Product> _products;
 
         // Creates mock data
         public ProductMockContext()

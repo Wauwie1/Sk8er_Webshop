@@ -9,7 +9,7 @@ namespace Sk8er_WebshopTest
     [TestClass]
     public class ProductLogicTest
     {
-        ProductLogic _logic = new ProductLogic(new ProductMockContext());
+        readonly ProductLogic _logic = new ProductLogic(new ProductMockContext());
         
         [TestMethod]
         public void GetById1()

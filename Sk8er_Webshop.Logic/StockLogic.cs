@@ -7,7 +7,7 @@ namespace Sk8er_Webshop.Logic
 {
     public class StockLogic
     {
-        private StockRepository _repository;
+        private readonly StockRepository _repository;
 
         public StockLogic(IStockContext<Stock> context)
         {
