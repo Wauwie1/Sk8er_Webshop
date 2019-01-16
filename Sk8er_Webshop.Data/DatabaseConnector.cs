@@ -64,5 +64,23 @@ namespace Sk8er_Webshop.Data
 
             return id;
         }
+
+        public bool ExecCommandBool(SqlCommand command)
+        {
+            bool exists = false;
+            var con = new SqlConnection(ConnectionString);
+
+            con.Open();
+            command.Connection = con;
+            var result = command.ExecuteScalar();
+            if (result != null)
+            {
+                exists = true;
+            }
+            
+            con.Close();
+
+            return exists;
+        }
     }
 }

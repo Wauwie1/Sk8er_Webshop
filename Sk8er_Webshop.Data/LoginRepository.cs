@@ -25,5 +25,15 @@ namespace Sk8er_Webshop.Data
         {
             return _context.SetAdress(adress, number, city, country, zipcode);
         }
+
+        public bool UserNameAlreadyExists(string username)
+        {
+            return _context.UserNameAlreadyExists(username);
+        }
+
+        public void RegisterUser(string username, string email, string password)
+        {
+            _context.RegisterUser(username, email, password);
+        }
     }
 }

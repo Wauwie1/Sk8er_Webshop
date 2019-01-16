@@ -66,7 +66,7 @@ namespace AspNetCore
                     ");
             EndContext();
             BeginContext(416, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c773ed278c754c208cbb9a3dcf339158", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cd27a52f540943d5aef7310d3b58a0c9", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -86,7 +86,7 @@ namespace AspNetCore
             WriteLiteral("\r\n                    <div class=\"carousel-caption d-none d-md-block\">\r\n                        ");
             EndContext();
             BeginContext(606, 174, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f66109b2ade4d0480b48a68c0be42c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "043e151c1a5e44768a21835cd06b4785", async() => {
                 BeginContext(679, 97, true);
                 WriteLiteral("\r\n                            <h3>De nieuwe zomercollectie is hier</h3>\r\n                        ");
                 EndContext();

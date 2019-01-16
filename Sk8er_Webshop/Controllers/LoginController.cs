@@ -53,6 +53,19 @@ namespace Sk8er_Webshop.Controllers
             return View();
         }
 
+        public IActionResult RegisterUser(string username, string email, string password)
+        {
+            if (!_logic.UserNameExists(username))
+            {
+                _logic.RegisterUser(username, email, password);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Content("Username already exists.");
+            }
+        }
+
         public IActionResult Userpage()
         {
             string userString = HttpContext.Session.GetString("User");

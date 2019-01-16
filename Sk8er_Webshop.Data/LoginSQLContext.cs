@@ -64,6 +64,25 @@ namespace Sk8er_Webshop.Data
             return id;
         }
 
+        public bool UserNameAlreadyExists(string username)
+        {
+            SqlCommand command = new SqlCommand("UsernameExists");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Username", username));
+            return DatabaseConnector.ExecCommandBool(command);
+        }
+
+        public void RegisterUser(string username, string email, string password)
+        {
+
+            SqlCommand command = new SqlCommand("RegisterUser");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Username", username));
+            command.Parameters.Add(new SqlParameter("@Password", password));
+            command.Parameters.Add(new SqlParameter("@Email", email));
+            DatabaseConnector.ExecCommand(command);
+        }
+
         private Adress CreateAdressInstance(DataRow row)
         {
             int id = (int)row["AdressKey"];

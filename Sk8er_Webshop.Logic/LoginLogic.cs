@@ -35,5 +35,16 @@ namespace Sk8er_Webshop.Logic
         {
            return _repository.SetAdress(adress, number, city, country, zipcode);
         }
+
+        public void RegisterUser(string username, string email, string password)
+        {
+
+           _repository.RegisterUser(username, email, password);
+        }
+
+        public bool UserNameExists(string username)
+        {
+            return _repository.UserNameAlreadyExists(username);
+        }
     }
 }
