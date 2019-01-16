@@ -7,16 +7,16 @@ namespace Sk8er_Webshop.Logic
 {
     public class PanelLogic 
     {
-        private readonly PanelRepository repository;
+        private readonly PanelRepository _repository;
         public PanelLogic(IPanelContext context)
         {
-            repository = new PanelRepository(context);
+            _repository = new PanelRepository(context);
 
         }
 
         public List<UserOrder> GetAllOrders()
         {
-            var list = repository.GetAllOrders();
+            var list = _repository.GetAllOrders();
 
             foreach (var order in list)
             {
@@ -31,13 +31,13 @@ namespace Sk8er_Webshop.Logic
 
         public List<UserOrdersAmount> GetUserOrdersAmount()
         {
-            var list = repository.GetUserOrdersAmount();
+            var list = _repository.GetUserOrdersAmount();
             return list;
         }
 
         public int GetTotalOrders()
         {
-            return repository.GetTotalOrders();
+            return _repository.GetTotalOrders();
         }
     }
 }

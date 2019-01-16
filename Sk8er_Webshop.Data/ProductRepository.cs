@@ -8,43 +8,43 @@ namespace Sk8er_Webshop.Data
 {
     public class ProductRepository
     {
-        private IProductContext<Product> context;
+        private IProductContext<Product> _context;
 
         public ProductRepository(IProductContext<Product> context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public IEnumerable<Product> GetAll(int page)
         {
-            return context.GetAll(page);
+            return _context.GetAll(page);
         }
 
         public Product GetById(int id)
         {
-            return context.GetById(id);
+            return _context.GetById(id);
         }
 
         public IEnumerable<Product> GetSearchedProducts(string search, int page)
         {
-            return context.GetSearchedProducts(search, page);
+            return _context.GetSearchedProducts(search, page);
         }
 
         public IEnumerable<Product> GetCategoryProducts(string category, int page)
         {
-            return context.GetCategoryProducts(category, page);
+            return _context.GetCategoryProducts(category, page);
         }
 
         public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
-            string ImgUrl)
+            string imgUrl)
         {
-            return context.AddNewProduct(name, description, price, collection, productType,
-              ImgUrl);
+            return _context.AddNewProduct(name, description, price, collection, productType,
+              imgUrl);
         }
 
         public void PlaceOrder(Order order)
         {
-            context.PlaceOrder(order);
+            _context.PlaceOrder(order);
         }
     }
 }

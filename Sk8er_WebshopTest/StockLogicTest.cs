@@ -8,11 +8,11 @@ namespace Sk8er_WebshopTest
     [TestClass]
     public class StockLogicTest
     {
-        private StockLogic logic = new StockLogic(new StockMockContext());
+        private StockLogic _logic = new StockLogic(new StockMockContext());
         [TestMethod]
         public void GetAllStock1()
         {
-            List<Stock> stocks = logic.GetAllStock();
+            List<Stock> stocks = _logic.GetAllStock();
             Assert.IsTrue(stocks.Count > 0);
         }
     }

@@ -7,18 +7,18 @@ namespace Sk8er_Webshop.Data
     public   class DatabaseConnector
     {
 
-        private string connectionString { get; set; }
-        public IConfiguration _configuration { get; private set; }
+        private string ConnectionString { get; set; }
+        public IConfiguration Configuration { get; private set; }
 
         public   DatabaseConnector(IConfiguration configuration)
         {
-            _configuration = configuration;
-            connectionString = configuration.GetConnectionString("Sk8erDB");
+            Configuration = configuration;
+            ConnectionString = configuration.GetConnectionString("Sk8erDB");
         }
         public   DataTable GetDataTable(SqlCommand storedProcedure)
         {
             var dataTable = new DataTable();
-            var con = new SqlConnection(connectionString);
+            var con = new SqlConnection(ConnectionString);
 
             con.Open();
 
@@ -40,7 +40,7 @@ namespace Sk8er_Webshop.Data
 
         public   void ExecCommand(SqlCommand storedProcedure)
         {
-            var con = new SqlConnection(connectionString);
+            var con = new SqlConnection(ConnectionString);
 
             con.Open();
 

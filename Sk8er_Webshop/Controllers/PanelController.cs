@@ -12,21 +12,21 @@ namespace Sk8er_Webshop.Controllers
 {
     public class PanelController : Controller
     {
-        private readonly StockLogic stockLogic;
-        private readonly ProductLogic productLogic;
-        private readonly PanelLogic logic;
-        private User user;
+        private readonly StockLogic _stockLogic;
+        private readonly ProductLogic _productLogic;
+        private readonly PanelLogic _logic;
+        private User _user;
 
         public PanelController(IConfiguration configuration)
         {
-            stockLogic = new StockLogic(new StockSQLContext(configuration));
-            productLogic = new ProductLogic(new ProductSQLContext(configuration));
-            logic = new PanelLogic(new PanelSQLContext(configuration));
+            _stockLogic = new StockLogic(new StockSqlContext(configuration));
+            _productLogic = new ProductLogic(new ProductSqlContext(configuration));
+            _logic = new PanelLogic(new PanelSqlContext(configuration));
         }
         public IActionResult Index()
         {
 
-            if (validUser())
+            if (ValidUser())
             {
                 return View();
             }
@@ -38,10 +38,10 @@ namespace Sk8er_Webshop.Controllers
             
         }
 
-        private bool validUser()
+        private bool ValidUser()
         {
-            setUser();
-            if (user != null && user.AuthLevel == 1)
+            SetUser();
+            if (_user != null && _user.AuthLevel == 1)
             {
                 return true;
             }
@@ -50,17 +50,17 @@ namespace Sk8er_Webshop.Controllers
                 return false;
             }
         }
-        private void setUser()
+        private void SetUser()
         {
-            string userJSON = HttpContext.Session.GetString("User");
+            string userJson = HttpContext.Session.GetString("User");
             try
             {
-                user = JsonConvert.DeserializeObject<User>(userJSON);
+                _user = JsonConvert.DeserializeObject<User>(userJson);
             }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine(ex);
-                user = null;
+                _user = null;
             }
             
         }
@@ -69,10 +69,10 @@ namespace Sk8er_Webshop.Controllers
         {
             var viewModel = new StockViewModel
             {
-                StockList = stockLogic.GetAllStock()
+                StockList = _stockLogic.GetAllStock()
             };
 
-            if (validUser())
+            if (ValidUser())
             {
                 return View(viewModel);
             }
@@ -84,7 +84,7 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult AddNewProduct()
         {
-            if (validUser())
+            if (ValidUser())
             {
                 return View();
             }
@@ -94,11 +94,11 @@ namespace Sk8er_Webshop.Controllers
             }
         }
 
-        public IActionResult AddNewProductToDB(string name, string description, decimal price, string collection, string productType,
-            string ImgUrl)
+        public IActionResult AddNewProductToDb(string name, string description, decimal price, string collection, string productType,
+            string imgUrl)
         {
-            if (productLogic.AddNewProduct(name, description, price, collection, productType,
-                ImgUrl) && validUser())
+            if (_productLogic.AddNewProduct(name, description, price, collection, productType,
+                imgUrl) && ValidUser())
             {
                 return RedirectToAction("NewProductSuccesfull");
             }
@@ -122,7 +122,7 @@ namespace Sk8er_Webshop.Controllers
         {
             AllOrdersViewModel viewModel = new AllOrdersViewModel()
             {
-                Orders = logic.GetAllOrders()
+                Orders = _logic.GetAllOrders()
             };
             return View(viewModel);
         }
@@ -131,8 +131,8 @@ namespace Sk8er_Webshop.Controllers
         {
             var viewModel = new OrdersAmountViewModel()
             {
-                UserOrdersAmount = logic.GetUserOrdersAmount(),
-                TotalOrders = logic.GetTotalOrders()
+                UserOrdersAmount = _logic.GetUserOrdersAmount(),
+                TotalOrders = _logic.GetTotalOrders()
             };
             return View(viewModel);
         }

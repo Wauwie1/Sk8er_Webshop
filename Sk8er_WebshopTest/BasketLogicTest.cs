@@ -10,26 +10,26 @@ namespace Sk8er_WebshopTest
     [TestClass]
     public class BasketLogicTest
     {
-        BasketLogic logic = new BasketLogic(new ProductMockContext());
+        BasketLogic _logic = new BasketLogic(new ProductMockContext());
 
         [TestMethod]
-        public void JSONToBasketItems1()
+        public void JsonToBasketItems1()
         {
-            List<BasketItem> items = logic.JSONTOBasketItems(null);
+            List<BasketItem> items = _logic.JsontoBasketItems(null);
             Assert.IsTrue(items.Count == 0);
         }
         [TestMethod]
-        public void JSONToBasketItems2()
+        public void JsonToBasketItems2()
         {
-            List<BasketItem> items = logic.JSONTOBasketItems("InvalidString");
+            List<BasketItem> items = _logic.JsontoBasketItems("InvalidString");
             Assert.IsNull(items);
         }
         [TestMethod]
-        public void JSONToBasketItems3()
+        public void JsonToBasketItems3()
         {
             //Correct string
-            string JSON = "[{\"Id\":3,\"Amount\":1,\"Size\":\"S\"}]";
-            List<BasketItem> items = logic.JSONTOBasketItems(JSON);
+            string json = "[{\"Id\":3,\"Amount\":1,\"Size\":\"S\"}]";
+            List<BasketItem> items = _logic.JsontoBasketItems(json);
             Assert.IsTrue(items.Count > 0);
         }
 

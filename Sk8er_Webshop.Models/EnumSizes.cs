@@ -2,12 +2,12 @@
 {
     public enum EnumSizes
     {
-        XS,
+        Xs,
         S,
         M,
         L,
-        XL,
-        XXL,
+        Xl,
+        Xxl,
         Other
     }
 }

@@ -8,15 +8,15 @@ namespace Sk8er_Webshop.Logic
 {
     public class LoginLogic
     {
-        private readonly LoginRepository repository;
+        private readonly LoginRepository _repository;
 
         public LoginLogic(ILoginContext context)
         {
-            repository = new LoginRepository(context);
+            _repository = new LoginRepository(context);
         }
         public User Login(string username, string password)
         {
-            return repository.Login(username, password);
+            return _repository.Login(username, password);
         }
 
         public User GetUser(string userString)
@@ -28,7 +28,7 @@ namespace Sk8er_Webshop.Logic
 
         public Adress GetAdress(int id)
         {
-            return repository.GetAdress(id);
+            return _repository.GetAdress(id);
         }
     }
 }

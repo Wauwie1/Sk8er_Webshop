@@ -9,11 +9,11 @@ namespace Sk8er_Webshop.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductLogic logic;
+        private readonly ProductLogic _logic;
 
         public ProductController(IConfiguration configuration)
         {
-            logic = new ProductLogic(new ProductSQLContext(configuration));
+            _logic = new ProductLogic(new ProductSqlContext(configuration));
         }
         public IActionResult Index()
         {
@@ -25,7 +25,7 @@ namespace Sk8er_Webshop.Controllers
             var viewModel = new AllProductViewModel
             {
                 Page = page,
-                Products = logic.GetAll(page)
+                Products = _logic.GetAll(page)
             };
 
             return View(viewModel);
@@ -35,7 +35,7 @@ namespace Sk8er_Webshop.Controllers
         {
             try
             {
-                var product = logic.GetById(id);
+                var product = _logic.GetById(id);
                 return View(product);
             }
             catch (NullReferenceException ex)
@@ -50,7 +50,7 @@ namespace Sk8er_Webshop.Controllers
             {
                 Page = page,
                 Search = search,
-                Products = logic.GetSearchedProducts(search, page)
+                Products = _logic.GetSearchedProducts(search, page)
             };
 
             return View(viewModel);
@@ -62,7 +62,7 @@ namespace Sk8er_Webshop.Controllers
             {
                 Page = page,
                 Category = category,
-                Products = logic.GetCategoryProducts(category, page)
+                Products = _logic.GetCategoryProducts(category, page)
             };
 
             return View(viewModel);

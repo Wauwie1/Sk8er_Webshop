@@ -11,19 +11,19 @@ namespace Sk8er_Webshop.Logic
 {
     public class BasketLogic
     {
-        private ProductRepository repository;
+        private ProductRepository _repository;
 
         public BasketLogic(IProductContext<Product> context)
         {
-            repository = new ProductRepository(context);
+            _repository = new ProductRepository(context);
         }
-        public List<BasketItem> JSONTOBasketItems(string JSONString)
+        public List<BasketItem> JsontoBasketItems(string jsonString)
         {
-            if (JSONString != null)
+            if (jsonString != null)
             {
                 try
                 {
-                    List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(JSONString);
+                    List<BasketItem> items = JsonConvert.DeserializeObject<List<BasketItem>>(jsonString);
 
                     SetProducts(items);
                     return items;
@@ -44,7 +44,7 @@ namespace Sk8er_Webshop.Logic
         {
             foreach (var item in items)
             {
-                item.Product = repository.GetById(item.Id);
+                item.Product = _repository.GetById(item.Id);
             }
         }
 
@@ -52,14 +52,14 @@ namespace Sk8er_Webshop.Logic
 
         public void PlaceOrder(Order order)
         {
-            order.TotalPrice = calculateTotalPrice(order);
-            repository.PlaceOrder(order);
+            order.TotalPrice = CalculateTotalPrice(order);
+            _repository.PlaceOrder(order);
         }
 
-        private decimal calculateTotalPrice(Order order)
+        private decimal CalculateTotalPrice(Order order)
         {
             decimal totalPrice = 0.0m;
-            List<BasketItem> basketItems = JSONTOBasketItems(order.ProductsJSON);
+            List<BasketItem> basketItems = JsontoBasketItems(order.ProductsJson);
             foreach (var basketItem in basketItems)
             {
                 totalPrice += basketItem.Product.Price * basketItem.Amount;

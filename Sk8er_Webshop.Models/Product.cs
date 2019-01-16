@@ -14,7 +14,7 @@ namespace Sk8er_Webshop.Models
 
         public string ProductType { get; set; }
 
-        public string ImgURL { get; set; }
+        public string ImgUrl { get; set; }
 
         public Stock Stock { get; set; }
 

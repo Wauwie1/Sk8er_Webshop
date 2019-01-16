@@ -8,9 +8,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Sk8er_Webshop.Data
 {
-    public class ProductSQLContext : InitDBConnector, IProductContext<Product>
+    public class ProductSqlContext : InitDbConnector, IProductContext<Product>
     {
-        public ProductSQLContext(IConfiguration configuration) : base(configuration)
+        public ProductSqlContext(IConfiguration configuration) : base(configuration)
         {
         }
 
@@ -75,7 +75,7 @@ namespace Sk8er_Webshop.Data
         }
 
         public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
-            string ImgUrl)
+            string imgUrl)
         {
 
             try
@@ -88,7 +88,7 @@ namespace Sk8er_Webshop.Data
                 command.Parameters.Add(new SqlParameter("@Price", price));
                 command.Parameters.Add(new SqlParameter("@Colection", collection));
                 command.Parameters.Add(new SqlParameter("@ProductType", productType));
-                command.Parameters.Add(new SqlParameter("@ImgUrl", ImgUrl));
+                command.Parameters.Add(new SqlParameter("@ImgUrl", imgUrl));
                 DatabaseConnector.ExecCommand(command);
                 return true;
             }
@@ -105,7 +105,7 @@ namespace Sk8er_Webshop.Data
             //Create stored procedure command
             SqlCommand command = new SqlCommand("AddOrder");
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@ProductJSON", order.ProductsJSON));
+            command.Parameters.Add(new SqlParameter("@ProductJSON", order.ProductsJson));
             command.Parameters.Add(new SqlParameter("@UserKey", order.UserKey));
             command.Parameters.Add(new SqlParameter("@Status", order.Status));
             command.Parameters.Add(new SqlParameter("@TotalPrice", order.TotalPrice));
@@ -118,23 +118,23 @@ namespace Sk8er_Webshop.Data
             var name = row["Name"].ToString();
             var collection = row["Collection"].ToString();
             var description = row["Description"].ToString();
-            var ID = (int)row["ProductKey"];
-            var imgURL = row["ImgURL"].ToString();
+            var id = (int)row["ProductKey"];
+            var imgUrl = row["ImgURL"].ToString();
             var price = (decimal)row["Price"];
             var productType = row["ProductType"].ToString();
 
 
             StockRepository repository = new StockRepository(
-                                            new StockSQLContext(DatabaseConnector._configuration));
-            var stock = repository.GetByProductId(ID);
+                                            new StockSqlContext(DatabaseConnector.Configuration));
+            var stock = repository.GetByProductId(id);
 
             var product = new Product
             {
                 Name = name,
                 Collection = collection,
                 Description = description,
-                Id = ID,
-                ImgURL = imgURL,
+                Id = id,
+                ImgUrl = imgUrl,
                 Price = price,
                 ProductType = productType,
                 Stock = stock

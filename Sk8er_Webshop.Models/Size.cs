@@ -5,10 +5,10 @@
         public EnumSizes SizeType { get; set; }
         public int Amount { get; set; }
 
-        public Size(EnumSizes SizeType, int Amount)
+        public Size(EnumSizes sizeType, int amount)
         {
-            this.SizeType = SizeType;
-            this.Amount = Amount;
+            this.SizeType = sizeType;
+            this.Amount = amount;
         }
     }
 }

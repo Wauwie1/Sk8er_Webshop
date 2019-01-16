@@ -5,21 +5,21 @@ namespace Sk8er_Webshop.Data
 {
     public class StockRepository
     {
-        private readonly IStockContext<Stock> context;
+        private readonly IStockContext<Stock> _context;
 
         public StockRepository(IStockContext<Stock> context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public Stock GetByProductId(int id)
         {
-            return context.GetByProductId(id);
+            return _context.GetByProductId(id);
         }
 
         public IEnumerable<Stock> GetAllStock()
         {
-            return context.GetAllStock();
+            return _context.GetAllStock();
         }
     }
 }

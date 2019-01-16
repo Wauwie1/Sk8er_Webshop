@@ -3,7 +3,7 @@
     public class Order : IModel
     {
         public int Id { get; set; }
-        public string ProductsJSON { get; set; }
+        public string ProductsJson { get; set; }
         public int UserKey { get; set; }
         public Status Status { get; set; }
         public decimal TotalPrice { get; set; }

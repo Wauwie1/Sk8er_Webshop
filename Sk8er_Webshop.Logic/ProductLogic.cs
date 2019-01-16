@@ -8,20 +8,20 @@ namespace Sk8er_Webshop.Logic
 {
     public class ProductLogic
     {
-        private readonly ProductRepository repository;
+        private readonly ProductRepository _repository;
         public ProductLogic(IProductContext<Product> context)
         {
-            repository = new ProductRepository(context);
+            _repository = new ProductRepository(context);
             
         }
 
         public List<Product> GetAll(int page)
         {
-            return repository.GetAll(page).ToList();
+            return _repository.GetAll(page).ToList();
         }
         public Product GetById(int id)
         {
-            Product product = repository.GetById(id);
+            Product product = _repository.GetById(id);
 
             //If no product found
             if (product == null)
@@ -51,7 +51,7 @@ namespace Sk8er_Webshop.Logic
             }
             else
             {
-                products = repository.GetSearchedProducts(search, page).ToList();
+                products = _repository.GetSearchedProducts(search, page).ToList();
             }
 
             return products;
@@ -59,13 +59,13 @@ namespace Sk8er_Webshop.Logic
 
         public List<Product> GetCategoryProducts(string category, int page)
         {
-            return repository.GetCategoryProducts(category, page).ToList();
+            return _repository.GetCategoryProducts(category, page).ToList();
         }
 
-        public bool AddNewProduct(string name, string description, decimal price, string collection, string productType, string ImgUrl)
+        public bool AddNewProduct(string name, string description, decimal price, string collection, string productType, string imgUrl)
         {
-            return repository.AddNewProduct(name, description, price, collection, productType,
-                ImgUrl);
+            return _repository.AddNewProduct(name, description, price, collection, productType,
+                imgUrl);
         }
     }
 }

@@ -9,12 +9,12 @@ namespace Sk8er_WebshopTest
 {
     public class ProductMockContext : IProductContext<Product>
     {
-        private List<Product> products;
+        private List<Product> _products;
 
         // Creates mock data
         public ProductMockContext()
         {
-            products = new List<Product>();
+            _products = new List<Product>();
             for (int i = 0; i < 100; i++)
             {
                 Product product = new Product()
@@ -23,7 +23,7 @@ namespace Sk8er_WebshopTest
                     Collection = "MockCollection",
                     Description = "This is a moc product",
                     Id = i,
-                    ImgURL = "MockURL",
+                    ImgUrl = "MockURL",
                     Price = 100,
                     ProductType = "MockShirt",
                     Stock = new Stock()
@@ -31,13 +31,13 @@ namespace Sk8er_WebshopTest
                         Sizes = new List<Size>()
                     }
                 };
-                products.Add(product);
+                _products.Add(product);
             }
         }
 
         public Product GetById(int id)
         {
-            return products.Find(p => p.Id == id);
+            return _products.Find(p => p.Id == id);
         }
 
         public void PlaceOrder(Order order)
@@ -50,7 +50,7 @@ namespace Sk8er_WebshopTest
             List<Product> returnList = new List<Product>();
             for (int i = page * 12; returnList.Count < 12; i++)
             {
-                returnList.Add(products[i]);
+                returnList.Add(_products[i]);
             }
 
             return returnList;
@@ -58,7 +58,7 @@ namespace Sk8er_WebshopTest
 
         public IEnumerable<Product> GetSearchedProducts(string search, int page)
         {
-            List<Product> results = products.Where(p => p.Name == search).ToList();
+            List<Product> results = _products.Where(p => p.Name == search).ToList();
             List<Product> returnList = new List<Product>();
             for (int i = page * 12; returnList.Count < 12; i++)
             {
@@ -78,7 +78,7 @@ namespace Sk8er_WebshopTest
 
         public IEnumerable<Product> GetCategoryProducts(string category, int page)
         {
-            List<Product> results = products.Where(p => p.ProductType == category).ToList();
+            List<Product> results = _products.Where(p => p.ProductType == category).ToList();
             List<Product> returnList = new List<Product>();
             for (int i = page * 12; returnList.Count < 12; i++)
             {
@@ -97,21 +97,21 @@ namespace Sk8er_WebshopTest
         }
 
         public bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
-            string ImgUrl)
+            string imgUrl)
         {
             // For integration test
             StockMockContext stockContext = new StockMockContext();
 
             try
             {
-                products.Add(new Product()
+                _products.Add(new Product()
                 {
                     Name = name,
                     Description = description,
                     Price = price,
                     Collection = collection,
                     ProductType = productType,
-                    ImgURL = ImgUrl,
+                    ImgUrl = imgUrl,
                     Stock = stockContext.GetByProductId(new Random().Next(0, 101))
 
                 });

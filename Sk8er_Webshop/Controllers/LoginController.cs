@@ -14,11 +14,11 @@ namespace Sk8er_Webshop.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly LoginLogic logic;
+        private readonly LoginLogic _logic;
 
         public LoginController(IConfiguration configuration)
         {
-            logic = new LoginLogic(new LoginSQLContext(configuration));
+            _logic = new LoginLogic(new LoginSqlContext(configuration));
         }
         public IActionResult Index()
         {
@@ -36,7 +36,7 @@ namespace Sk8er_Webshop.Controllers
         public IActionResult Login(string username, string password)
         {
 
-            User user = logic.Login(username, password);
+            User user = _logic.Login(username, password);
             if (user != null)
             {
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user));
@@ -58,7 +58,7 @@ namespace Sk8er_Webshop.Controllers
             string userString = HttpContext.Session.GetString("User");
             UserViewModel viewModel = new UserViewModel()
             {
-                CurrentUser = logic.GetUser(userString)
+                CurrentUser = _logic.GetUser(userString)
             };
             return View(viewModel);
         }
@@ -71,12 +71,12 @@ namespace Sk8er_Webshop.Controllers
         public IActionResult Adress()
         {
             string userString = HttpContext.Session.GetString("User");
-            User user = logic.GetUser(userString);
+            User user = _logic.GetUser(userString);
 
             UserViewModel viewModel = new UserViewModel()
             {
                 CurrentUser = user,
-                UserAdress = logic.GetAdress(user.AdressId)
+                UserAdress = _logic.GetAdress(user.AdressId)
             };
             return View(viewModel);
         }

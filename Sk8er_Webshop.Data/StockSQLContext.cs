@@ -7,9 +7,9 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-    public class StockSQLContext : InitDBConnector, IStockContext<Stock>
+    public class StockSqlContext : InitDbConnector, IStockContext<Stock>
     {
-        public StockSQLContext(IConfiguration configuration) : base(configuration)
+        public StockSqlContext(IConfiguration configuration) : base(configuration)
         {
         }
         public IEnumerable<Stock> GetAllStock()
@@ -59,7 +59,7 @@ namespace Sk8er_Webshop.Data
 
         private static Stock CreateStockInstance(DataRow row)
         {
-            var ID = (int)row["StockKey"];
+            var id = (int)row["StockKey"];
             var productKey = (int)row["ProductKey"];
             string productName;
             try
@@ -72,28 +72,28 @@ namespace Sk8er_Webshop.Data
                 productName = "";
             }
 
-            var XS = new Size(EnumSizes.XS, (int)row["XS"]);
-            var S = new Size(EnumSizes.S, (int)row["S"]);
-            var M = new Size(EnumSizes.M, (int)row["M"]);
-            var L = new Size(EnumSizes.L, (int)row["L"]);
-            var XL = new Size(EnumSizes.XL, (int)row["XL"]);
-            var XXL = new Size(EnumSizes.XXL, (int)row["XXL"]);
-            var Other = new Size(EnumSizes.Other, (int)row["Other"]);
+            var xs = new Size(EnumSizes.Xs, (int)row["XS"]);
+            var s = new Size(EnumSizes.S, (int)row["S"]);
+            var m = new Size(EnumSizes.M, (int)row["M"]);
+            var l = new Size(EnumSizes.L, (int)row["L"]);
+            var xl = new Size(EnumSizes.Xl, (int)row["XL"]);
+            var xxl = new Size(EnumSizes.Xxl, (int)row["XXL"]);
+            var other = new Size(EnumSizes.Other, (int)row["Other"]);
 
             var stock = new Stock
             {
-                Id = ID,
+                Id = id,
                 ProductKey = productKey,
                 ProductName = productName,
                 Sizes = new List<Size>()
             };
-            stock.Sizes.Add(XS);
-            stock.Sizes.Add(S);
-            stock.Sizes.Add(M);
-            stock.Sizes.Add(L);
-            stock.Sizes.Add(XL);
-            stock.Sizes.Add(XXL);
-            stock.Sizes.Add(Other);
+            stock.Sizes.Add(xs);
+            stock.Sizes.Add(s);
+            stock.Sizes.Add(m);
+            stock.Sizes.Add(l);
+            stock.Sizes.Add(xl);
+            stock.Sizes.Add(xxl);
+            stock.Sizes.Add(other);
 
             return stock;
         }

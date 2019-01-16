@@ -14,14 +14,14 @@ namespace Sk8er_Webshop.Controllers
 {
     public class BasketController : Controller
     {
-        private readonly BasketLogic logic;
-        private readonly LoginLogic loginLogic;
-        private string cookie;
+        private readonly BasketLogic _logic;
+        private readonly LoginLogic _loginLogic;
+        private string _cookie;
 
         public BasketController(IConfiguration configuration)
         {
-            logic = new BasketLogic(new ProductSQLContext(configuration));
-            loginLogic = new LoginLogic(new LoginSQLContext(configuration));
+            _logic = new BasketLogic(new ProductSqlContext(configuration));
+            _loginLogic = new LoginLogic(new LoginSqlContext(configuration));
         }
         public IActionResult Index()
         {
@@ -30,21 +30,21 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult Overview()
         {
-             cookie = Request.Cookies["BasketCookie"];
+             _cookie = Request.Cookies["BasketCookie"];
 
             BasketViewModel viewModel = new BasketViewModel()
             {
-                BasketItems = logic.JSONTOBasketItems(cookie),
+                BasketItems = _logic.JsontoBasketItems(_cookie),
             };
             return View(viewModel);
         }
 
         public IActionResult Checkout()
         {
-            cookie = Request.Cookies["BasketCookie"];
+            _cookie = Request.Cookies["BasketCookie"];
             BasketViewModel viewModel = new BasketViewModel()
             {
-                BasketItems = logic.JSONTOBasketItems(cookie),
+                BasketItems = _logic.JsontoBasketItems(_cookie),
             };
 
             if (viewModel.BasketItems.Count > 0)
@@ -62,17 +62,17 @@ namespace Sk8er_Webshop.Controllers
             if (Request.Cookies["BasketCookie"] != null)
             {
                 string userString = HttpContext.Session.GetString("User");
-                User user = loginLogic.GetUser(userString);
+                User user = _loginLogic.GetUser(userString);
 
                 Order order = new Order()
                 {
                     
-                    ProductsJSON = Request.Cookies["BasketCookie"],
+                    ProductsJson = Request.Cookies["BasketCookie"],
                     UserKey = user.Id,
                     Status = 0
 
                 };
-                logic.PlaceOrder(order);
+                _logic.PlaceOrder(order);
 
                 // Empties basket
                 HttpContext.Response.Cookies.Delete("BasketCookie");

@@ -7,10 +7,10 @@ namespace Sk8er_WebshopTest
 {
     public class StockMockContext : IStockContext<Stock>
     {
-        private List<Stock> stocks { get; }
+        private List<Stock> Stocks { get; }
         public StockMockContext()
         {
-            stocks = new List<Stock>();
+            Stocks = new List<Stock>();
             for (int i = 0; i < 100; i++)
             {
                 var stock = new Stock()
@@ -22,18 +22,18 @@ namespace Sk8er_WebshopTest
                 };
                 Random random = new Random();
                 stock.Sizes.Add(new Size(EnumSizes.M, random.Next(0, 51)));
-                stocks.Add(stock);
+                Stocks.Add(stock);
             }
             
         }
         public Stock GetByProductId(int id)
         {
-            return stocks.Find(s => s.Id == id);
+            return Stocks.Find(s => s.Id == id);
         }
 
         public IEnumerable<Stock> GetAllStock()
         {
-            return stocks;
+            return Stocks;
         }
     }
 }

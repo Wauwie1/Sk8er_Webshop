@@ -7,15 +7,15 @@ namespace Sk8er_Webshop.Logic
 {
     public class StockLogic
     {
-        private StockRepository repository;
+        private StockRepository _repository;
 
         public StockLogic(IStockContext<Stock> context)
         {
-            repository = new StockRepository(context);
+            _repository = new StockRepository(context);
         }
         public List<Stock> GetAllStock()
         {
-            return repository.GetAllStock().ToList();
+            return _repository.GetAllStock().ToList();
         }
     }
 }

@@ -6,9 +6,9 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-    public class PanelSQLContext : InitDBConnector, IPanelContext
+    public class PanelSqlContext : InitDbConnector, IPanelContext
     {
-        public PanelSQLContext(IConfiguration configuration) : base(configuration)
+        public PanelSqlContext(IConfiguration configuration) : base(configuration)
         {
         }
 

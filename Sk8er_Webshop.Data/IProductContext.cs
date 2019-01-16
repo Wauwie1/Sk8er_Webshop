@@ -9,7 +9,7 @@ namespace Sk8er_Webshop.Data
         IEnumerable<T> GetSearchedProducts(string search, int page);
         IEnumerable<T> GetCategoryProducts(string category, int page);
         bool AddNewProduct(string name, string description, decimal price, string collection, string productType,
-            string ImgUrl);
+            string imgUrl);
 
         void PlaceOrder(Order order);
         IEnumerable<Product> GetAll(int page);

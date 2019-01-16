@@ -5,9 +5,9 @@ using Sk8er_Webshop.Models;
 
 namespace Sk8er_Webshop.Data
 {
-    public class LoginSQLContext : InitDBConnector, ILoginContext
+    public class LoginSqlContext : InitDbConnector, ILoginContext
     {
-        public LoginSQLContext(IConfiguration configuration) : base(configuration)
+        public LoginSqlContext(IConfiguration configuration) : base(configuration)
         {
         }
         public User Login(string username, string password)
