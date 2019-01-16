@@ -52,5 +52,17 @@ namespace Sk8er_Webshop.Data
 
             con.Close();
         }
+
+        public int ExecCommandId(SqlCommand command)
+        {
+            var con = new SqlConnection(ConnectionString);
+
+            con.Open();
+            command.Connection = con;
+            int id = (int)command.ExecuteScalar();
+            con.Close();
+
+            return id;
+        }
     }
 }

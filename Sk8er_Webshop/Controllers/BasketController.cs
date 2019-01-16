@@ -49,7 +49,14 @@ namespace Sk8er_Webshop.Controllers
 
             if (viewModel.BasketItems.Count > 0)
             {
-                return View();
+                if (!String.IsNullOrEmpty(HttpContext.Session.GetString("User")))
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Login");
+                }
             }
             else
             {
@@ -57,19 +64,27 @@ namespace Sk8er_Webshop.Controllers
             }
         }
 
-        public IActionResult Pay(string firstName, string lastName, string userName, string email, string adress, string country, string zipcode)
+        public IActionResult Pay(string firstName, string lastName, string email, string adress, int number, string city, string country, string zipcode)
         {
-            if (Request.Cookies["BasketCookie"] != null)
+            _cookie = Request.Cookies["BasketCookie"];
+
+            if (_cookie != null)
             {
+                // Get User
                 string userString = HttpContext.Session.GetString("User");
                 User user = _loginLogic.GetUser(userString);
+
+                // Update user
 
                 Order order = new Order()
                 {
                     
-                    ProductsJson = Request.Cookies["BasketCookie"],
+                    ProductsJson = _cookie,
                     UserKey = user.Id,
-                    Status = 0
+                    AdressKey = _loginLogic.SetAdress(adress, number, city, country, zipcode),
+                    Status = 0,
+                    FirstName = firstName,
+                    LastName = lastName
 
                 };
                 _logic.PlaceOrder(order);

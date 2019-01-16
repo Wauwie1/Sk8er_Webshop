@@ -7,5 +7,6 @@ namespace Sk8er_Webshop.Data
     {
         User Login(string username, string password);
         Adress GetAdress(int id);
+        int SetAdress(string adress, int number, string city, string country, string zipcode);
     }
 }

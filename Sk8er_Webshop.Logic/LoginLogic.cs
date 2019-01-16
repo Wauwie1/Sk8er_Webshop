@@ -30,5 +30,10 @@ namespace Sk8er_Webshop.Logic
         {
             return _repository.GetAdress(id);
         }
+
+        public int SetAdress(string adress, int number, string city, string country, string zipcode)
+        {
+           return _repository.SetAdress(adress, number, city, country, zipcode);
+        }
     }
 }

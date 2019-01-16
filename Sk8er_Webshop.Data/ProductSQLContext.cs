@@ -106,9 +106,12 @@ namespace Sk8er_Webshop.Data
             SqlCommand command = new SqlCommand("AddOrder");
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@ProductJSON", order.ProductsJson));
+            command.Parameters.Add(new SqlParameter("@AdressKey", order.AdressKey));
             command.Parameters.Add(new SqlParameter("@UserKey", order.UserKey));
             command.Parameters.Add(new SqlParameter("@Status", order.Status));
             command.Parameters.Add(new SqlParameter("@TotalPrice", order.TotalPrice));
+            command.Parameters.Add(new SqlParameter("@FirstName", order.FirstName));
+            command.Parameters.Add(new SqlParameter("@LastName", order.LastName));
             DatabaseConnector.ExecCommand(command);
         }
 

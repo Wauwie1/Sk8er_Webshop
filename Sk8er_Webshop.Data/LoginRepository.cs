@@ -20,5 +20,10 @@ namespace Sk8er_Webshop.Data
         {
             return _context.GetAdress(id);
         }
+
+        public int SetAdress(string adress, int number, string city, string country, string zipcode)
+        {
+            return _context.SetAdress(adress, number, city, country, zipcode);
+        }
     }
 }

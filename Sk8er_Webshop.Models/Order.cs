@@ -3,10 +3,13 @@
     public class Order : IModel
     {
         public int Id { get; set; }
+        public int AdressKey { get; set; }
         public string ProductsJson { get; set; }
         public int UserKey { get; set; }
         public Status Status { get; set; }
         public decimal TotalPrice { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
     }
 

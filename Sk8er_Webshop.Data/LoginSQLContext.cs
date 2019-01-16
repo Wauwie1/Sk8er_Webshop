@@ -50,6 +50,20 @@ namespace Sk8er_Webshop.Data
             }
         }
 
+        public int SetAdress(string adress, int number, string city, string country, string zipcode)
+        {
+            SqlCommand command = new SqlCommand("SetAdress");
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@StreetName", adress));
+            command.Parameters.Add(new SqlParameter("@HouseNumber", number));
+            command.Parameters.Add(new SqlParameter("@ZipCode", zipcode));
+            command.Parameters.Add(new SqlParameter("@Country", country));
+            command.Parameters.Add(new SqlParameter("@City", city));
+
+            int id = DatabaseConnector.ExecCommandId(command);
+            return id;
+        }
+
         private Adress CreateAdressInstance(DataRow row)
         {
             int id = (int)row["AdressKey"];

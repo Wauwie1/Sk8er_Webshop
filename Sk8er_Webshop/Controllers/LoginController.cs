@@ -65,7 +65,7 @@ namespace Sk8er_Webshop.Controllers
 
         public IActionResult LoginFailed()
         {
-            throw new NotImplementedException();
+            return Content("Login failed");
         }
 
         public IActionResult Adress()
