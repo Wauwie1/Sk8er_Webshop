@@ -97,4 +97,21 @@
     border-radius: 0rem;
 }
 
+.carousel {
+    max-width: 900px;
+    max-height: 400px;
+}
 
+.carousel-item {
+    max-width: 900px;
+    max-height: 400px;
+}
+
+.carousel-item img {
+    max-width: 900px;
+    max-height: 400px;
+}
+
+.carousel-caption a {
+    color: white;
+}
